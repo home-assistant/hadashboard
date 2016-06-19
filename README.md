@@ -4,7 +4,7 @@ HADashboard is a dashboard for [Home Assistant](https://home-assistant.io/) that
 
 ![UI](images/dash.png)
 
-HADashboard was originally created by the excellent work of [FlorianZ](https://github.com/FlorianZ/hadashboard) for use with the SmartThings Home Automation system, with notable contributions from the [SmartThings Community](https://community.smartthings.com/t/home-automation-dashboard/4926). I would also like to acknowledge contributions made by [@zipriddy](https://github.com/zpriddy/SmartThings_PyDash). This is my port of hadashboard to Home Assistant.
+HADashboard was originally created by the excellent work of [FlorianZ](https://github.com/FlorianZ/hadashboard) for use with the SmartThings Home Automation system, with notable contributions from the [SmartThings Community](https://community.smartthings.com/t/home-automation-dashboard/4926). I would also like to acknowledge contributions made by [zipriddy](https://github.com/zpriddy/SmartThings_PyDash). This is my port of hadashboard to Home Assistant.
 
 # Architecture
 
@@ -179,7 +179,7 @@ At this time I have provided support for the following Home Assistant entity typ
 - ***script***: Widget type ***Hascript***
 - ***input_select (read only)***: Widget type ***Hainputselect***
 - ***sensor (humidity)***: Widget type ***Hahumidity***
-- ***sensor (Luminance)***: Widget type ***Halux***
+- ***sensor (luminance)***: Widget type ***Halux***
 - ***sensor (motion)***: Widget type ***Hamotion***
 - ***sensor (temperature)***: Widget type ***Hatemp***
 - ***weather (requires forecast.io)***: Widget type ***Haweather***
