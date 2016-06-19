@@ -1,0 +1,10 @@
+[Unit]
+Description=Home Assistant Dashboard
+
+[Service]
+ExecStart=/etc/init.d/dashing start
+ExecStop=/etc/init.d/dashing stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

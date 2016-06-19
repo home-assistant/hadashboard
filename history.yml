@@ -1,0 +1,292 @@
+---
+karma: |+
+  data: {"mode":100,"id":"karma","updatedAt":1462365266}
+
+mode: |+
+  data: {"mode":"Day","id":"mode","updatedAt":1462366489}
+
+stmode: |+
+  data: {"mode":"Day","id":"stmode","updatedAt":1462365397}
+
+m: |+
+  data: {"mode":"Day","id":"m","updatedAt":1462365476}
+
+d: |+
+  data: {"mode":"Day","id":"d","updatedAt":1462365497}
+
+office: |+
+  data: {"state":"on","id":"office","updatedAt":1462736878}
+
+office_switch_12: |+
+  data: {"state":"off","id":"office_switch_12","updatedAt":1463344658}
+
+animal_tree_switch_22: |+
+  data: {"state":"off","id":"animal_tree_switch_22","updatedAt":1463344661}
+
+main_tree_switch_20: |+
+  data: {"state":"off","id":"main_tree_switch_20","updatedAt":1463344660}
+
+andrewsiphone: |+
+  data: {"state":"home","id":"andrewsiphone","updatedAt":1462713973}
+
+house_mode: |+
+  data: {"value":"Day","id":"house_mode","updatedAt":1464102172}
+
+heating: |+
+  data: {"state":"off","id":"heating","updatedAt":1463344646}
+
+wendysiphone: |+
+  data: {"state":"home","id":"wendysiphone","updatedAt":1462713974}
+
+downstairs_sensor_26: |+
+  data: {"state":"off","id":"downstairs_sensor_26","updatedAt":1462715978}
+
+porch_multisensor_sensor_27: |+
+  data: {"state":"off","id":"porch_multisensor_sensor_27","updatedAt":1463344663}
+
+date__time: |+
+  data: {"value":"2016-05-08, 11:13","id":"date__time","updatedAt":1462720380}
+
+ram_free: |+
+  data: {"value":"747.3","id":"ram_free","updatedAt":1462720380}
+
+brett: |+
+  data: {"value":"16:13","id":"brett","updatedAt":1462720380}
+
+side_multisensor_luminance_25: |+
+  data: {"value":"1245.0","id":"side_multisensor_luminance_25","updatedAt":1466347552}
+
+cpu_use: |+
+  data: {"value":"2","id":"cpu_use","updatedAt":1462720380}
+
+weather_wind_speed: |+
+  data: {"value":"6.43","id":"weather_wind_speed","updatedAt":1462720381}
+
+weather_dew_point: |+
+  data: {"value":"49.5","id":"weather_dew_point","updatedAt":1462720381}
+
+weather_wind_bearing: |+
+  data: {"value":"200","id":"weather_wind_bearing","updatedAt":1462720381}
+
+weather_visibility: |+
+  data: {"value":"6.69","id":"weather_visibility","updatedAt":1462720381}
+
+weather_pressure: |+
+  data: {"value":"1003.9","id":"weather_pressure","updatedAt":1462713211}
+
+side_multisensor_temperature_25: |+
+  data: {"value":"57.2","id":"side_multisensor_temperature_25","updatedAt":1462720377}
+
+side_multisensor_relative_humidity_25: |+
+  data: {"value":"50.0","id":"side_multisensor_relative_humidity_25","updatedAt":1466347551}
+
+weather_temperature: |+
+  data: {"value":"52.0","id":"weather_temperature","updatedAt":1462720381}
+
+weather_apparent_temperature: |+
+  data: {"value":"52.0","id":"weather_apparent_temperature","updatedAt":1462720381}
+
+weather_nearest_storm_distance: |+
+  data: {"value":"0","id":"weather_nearest_storm_distance","updatedAt":1462714531}
+
+weather_nearest_storm_bearing: |+
+  data: {"value":"131","id":"weather_nearest_storm_bearing","updatedAt":1462567471}
+
+weather_ozone: |+
+  data: {"value":"376.8","id":"weather_ozone","updatedAt":1462720381}
+
+side_multisensor_sensor_25: |+
+  data: {"state":"off","id":"side_multisensor_sensor_25","updatedAt":1462713964}
+
+weather_humidity: |+
+  data: {"value":"91.0","id":"weather_humidity","updatedAt":1462720381}
+
+upstairs_thermostat_temperature_14: |+
+  data: {"value":"70.0","id":"upstairs_thermostat_temperature_14","updatedAt":1462713962}
+
+upstairs_thermometer: |+
+  data: {"value":"70.5","id":"upstairs_thermometer","updatedAt":1463344659}
+
+porch_multisensor_temperature_27: |+
+  data: {"value":"52.6","id":"porch_multisensor_temperature_27","updatedAt":1462715079}
+
+porch_multisensor_luminance_27: |+
+  data: {"value":"66.0","id":"porch_multisensor_luminance_27","updatedAt":1462715082}
+
+weather: |+
+  data: {"temp":"74.3","humidity":"60.0","icon":"clear_day","tempchill":0,"precipintensity":"0","precip":"0","windspeed":"4.12","windbearing":"102","pressure":"1025.8","id":"weather","updatedAt":1466347422}
+
+weather_cloud_coverage: |+
+  data: {"value":"89.0","id":"weather_cloud_coverage","updatedAt":1462719631}
+
+porch_multisensor_burglar_27: |+
+  data: {"value":"0","id":"porch_multisensor_burglar_27","updatedAt":1462713966}
+
+porch_multisensor_relative_humidity_27: |+
+  data: {"value":"91.0","id":"porch_multisensor_relative_humidity_27","updatedAt":1462713966}
+
+living_room_level_4: |+
+  data: {"level":30,"state":"off","id":"living_room_level_4","updatedAt":1463344656}
+
+kitchen_level_3: |+
+  data: {"level":30,"state":"off","id":"kitchen_level_3","updatedAt":1463344656}
+
+living_room_front_level_2: |+
+  data: {"level":30,"state":"off","id":"living_room_front_level_2","updatedAt":1463344655}
+
+hall_level_8: |+
+  data: {"level":30,"state":"off","id":"hall_level_8","updatedAt":1463344657}
+
+wendys_lamp_level_5: |+
+  data: {"level":30,"state":"off","id":"wendys_lamp_level_5","updatedAt":1463344656}
+
+andrews_lamp_level_7: |+
+  data: {"level":30,"state":"off","id":"andrews_lamp_level_7","updatedAt":1463344657}
+
+smart_heating: |+
+  data: {"value":"off","id":"smart_heating","updatedAt":1462719952}
+
+thermostat_set: |+
+  data: {"value":"60","id":"thermostat_set","updatedAt":1463344660}
+
+garage: |+
+  data: {"state":"closed","id":"garage","updatedAt":1462558181}
+
+bedroom_level_11: |+
+  data: {"level":30,"state":"off","id":"bedroom_level_11","updatedAt":1463397030}
+
+downstairs_thermostat_temperature_15: |+
+  data: {"value":"70.0","id":"downstairs_thermostat_temperature_15","updatedAt":1462713962}
+
+downstairs_thermometer: |+
+  data: {"value":"70.0","id":"downstairs_thermometer","updatedAt":1463344660}
+
+disk_free_home: |+
+  data: {"value":"20.3","id":"disk_free_home","updatedAt":1462558185}
+
+front_path_switch_10: |+
+  data: {"state":"off","id":"front_path_switch_10","updatedAt":1463344658}
+
+porch_level_9: |+
+  data: {"level":30,"state":"off","id":"porch_level_9","updatedAt":1463344657}
+
+weather_summary: |+
+  data: {"value":"Overcast","id":"weather_summary","updatedAt":1462713521}
+
+weather_icon: |+
+  data: {"value":"cloudy","id":"weather_icon","updatedAt":1462713521}
+
+basement_thermostat_temperature_24: |+
+  data: {"value":"70.5","id":"basement_thermostat_temperature_24","updatedAt":1462714040}
+
+basement_thermometer: |+
+  data: {"value":"70.5","id":"basement_thermometer","updatedAt":1462713963}
+
+weather_precip_intensity: |+
+  data: {"value":"0.0027","id":"weather_precip_intensity","updatedAt":1462715131}
+
+weather_precip: |+
+  data: {"value":"rain","id":"weather_precip","updatedAt":1462714981}
+
+weather_precip_probability: |+
+  data: {"value":"35.0","id":"weather_precip_probability","updatedAt":1462715881}
+
+yr_symbol: |+
+  data: {"value":"9","id":"yr_symbol","updatedAt":1462558184}
+
+side_multisensor_ultraviolet_25: |+
+  data: {"value":"0.0","id":"side_multisensor_ultraviolet_25","updatedAt":1462714033}
+
+side_multisensor_alarm_type_25: |+
+  data: {"value":"0","id":"side_multisensor_alarm_type_25","updatedAt":1462713964}
+
+upstairs_thermostat_temperature_14_2: |+
+  data: {"value":"70.0","id":"upstairs_thermostat_temperature_14_2","updatedAt":1462714036}
+
+upstairs_thermostat_relative_humidity_14_3: |+
+  data: {"value":"43.0","id":"upstairs_thermostat_relative_humidity_14_3","updatedAt":1462713961}
+
+downstairs_thermostat_temperature_15_2: |+
+  data: {"value":"70.0","id":"downstairs_thermostat_temperature_15_2","updatedAt":1462713962}
+
+downstairs_thermostat_relative_humidity_15_3: |+
+  data: {"value":"49.0","id":"downstairs_thermostat_relative_humidity_15_3","updatedAt":1462714038}
+
+basement_thermostat_temperature_24_2: |+
+  data: {"value":"70.5","id":"basement_thermostat_temperature_24_2","updatedAt":1462714041}
+
+basement_thermostat_relative_humidity_24_3: |+
+  data: {"value":"51.0","id":"basement_thermostat_relative_humidity_24_3","updatedAt":1462714041}
+
+porch_multisensor_ultraviolet_27: |+
+  data: {"value":"0.0","id":"porch_multisensor_ultraviolet_27","updatedAt":1462715083}
+
+porch_multisensor_alarm_type_27: |+
+  data: {"value":"0","id":"porch_multisensor_alarm_type_27","updatedAt":1462713966}
+
+porch_multisensor_alarm_level_27: |+
+  data: {"value":"0","id":"porch_multisensor_alarm_level_27","updatedAt":1462713966}
+
+outside_decorations_switch_23: |+
+  data: {"state":"off","id":"outside_decorations_switch_23","updatedAt":1463344662}
+
+side_multisensor_alarm_level_25: |+
+  data: {"value":"0","id":"side_multisensor_alarm_level_25","updatedAt":1462713965}
+
+downstairs_alarm_type_26: |+
+  data: {"value":"0","id":"downstairs_alarm_type_26","updatedAt":1462713965}
+
+downstairs_alarm_level_26: |+
+  data: {"value":"0","id":"downstairs_alarm_level_26","updatedAt":1462713965}
+
+downstairs_sourcenodeid_26: |+
+  data: {"value":"0","id":"downstairs_sourcenodeid_26","updatedAt":1462713965}
+
+downstairs_burglar_26: |+
+  data: {"value":"3","id":"downstairs_burglar_26","updatedAt":1462713965}
+
+porch_multisensor_sourcenodeid_27: |+
+  data: {"value":"0","id":"porch_multisensor_sourcenodeid_27","updatedAt":1462713966}
+
+guest_mode: |+
+  data: {"value":"off","id":"guest_mode","updatedAt":1462713958}
+
+presence_mode: |+
+  data: {"value":"Home","id":"presence_mode","updatedAt":1462713973}
+
+vacation_mode: |+
+  data: {"value":"off","id":"vacation_mode","updatedAt":1462713958}
+
+last_boot: |+
+  data: {"value":"2016-04-25","id":"last_boot","updatedAt":1462558185}
+
+vacation: |+
+  data: {"state":"off","id":"vacation","updatedAt":1462713958}
+
+guest: |+
+  data: {"state":"off","id":"guest","updatedAt":1462713958}
+
+porch_notifications: |+
+  data: {"state":"on","id":"porch_notifications","updatedAt":1462713958}
+
+side_temp_corrected: |+
+  data: {"value":"72.3","id":"side_temp_corrected","updatedAt":1466347551}
+
+evening: |+
+  data: {"mode":"Day","id":"evening","updatedAt":1464102172}
+
+morning: |+
+  data: {"mode":"Day","id":"morning","updatedAt":1464102172}
+
+day: |+
+  data: {"mode":"Day","id":"day","updatedAt":1464102172}
+
+night: |+
+  data: {"mode":"Day","id":"night","updatedAt":1464102172}
+
+office_level_29: |+
+  data: {"level":30,"state":"off","id":"office_level_29","updatedAt":1464101652}
+
+side_humidity_corrected: |+
+  data: {"value":"70.0","id":"side_humidity_corrected","updatedAt":1466347551}
+

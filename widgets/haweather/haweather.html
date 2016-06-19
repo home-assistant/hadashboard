@@ -1,0 +1,24 @@
+<p class="primary-climacon colored" data-bind="climacon[icon] | raw"></p>
+
+<p class="primary-info colored" data-bind="temp"></p>
+<p class="primary-unit colored">&deg;F</p>
+
+<br>
+<p class="secondary-info colored">Humidity:</p>
+<p class="secondary-info colored" data-bind="humidity | append '%'"></p>
+<br>
+<p class="secondary-info colored">Wind Chill:</p>
+<p class="secondary-info colored" data-bind="tempchill | append '&deg;'"></p>
+<br>
+<p class="secondary-info colored">Rain:</p>
+<p class="secondary-info colored" data-bind="precip | append '%'"></p>
+<p class="secondary-info colored">/</p>
+<p class="secondary-info colored" data-bind="precipintensity | append ' in'"></p>
+<br>
+<p class="secondary-info colored">Wind:</p>
+<p class="secondary-info colored" data-bind="windspeed | append ' Mph'"></p>
+<p class="secondary-info colored">/</p>
+<p class="secondary-info colored" data-bind="windbearing | append '&deg'"></p>
+<br>
+<p class="secondary-info colored">Pressure:</p>
+<p class="secondary-info colored" data-bind="pressure | append ' MBar'"></p>

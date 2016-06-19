@@ -1,0 +1,33 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// Widget-hahumidity styles
+// ----------------------------------------------------------------------------
+.widget-hahumidity {
+
+  background-color: #444 !important;
+
+  .title {
+    color: #fff
+  }
+
+  .value {
+    color: #00aaff;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .unit {
+    color: #00aaff;
+    font-size: 225%;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+
+}

@@ -1,0 +1,19 @@
+// ----------------------------------------------------------------------------
+// Widget-hadevicetracker styles
+// ----------------------------------------------------------------------------
+.widget-hadevicetracker {
+
+  background-color: #444 !important;
+
+  .title {
+    color: #fff;
+  }
+
+  .icon-present {
+  	color: #aaff00;
+  }
+
+  .icon-absent {
+  	color: #888888;
+  }
+}

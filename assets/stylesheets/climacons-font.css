@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'Climacons-Font';
+	src:url('climacons-webfont.eot');
+	src:url('climacons-webfont.eot?#iefix') format('embedded-opentype'),
+		url('climacons-webfont.svg#Climacons-Font') format('svg'),
+		url('climacons-webfont.woff') format('woff'),
+		url('climacons-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

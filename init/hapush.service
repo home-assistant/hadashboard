@@ -1,0 +1,10 @@
+[Unit]
+Description=Push events from Home Assistant to Dashing
+
+[Service]
+ExecStart=/etc/init.d/hapush start
+ExecStop=/etc/init.d/hapush stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

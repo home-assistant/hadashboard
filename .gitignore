@@ -1,0 +1,5 @@
+dashing.pid
+Gemfile.lock
+log/
+persistent.db
+

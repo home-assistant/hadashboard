@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'securerandom'
+
+class HADashboardCLI < Thor
+  include Thor::Actions
+
+  desc "setup", "Sets up the Heroku app and its environment."
+  def setup
+    say "Authorizing with Heroku", :green
+    say "NOTE: Make sure to upload a public key if prompted!", :green
+    system "heroku login"
+    username = system "heroku auth:whoami"
+    say ""
+
+    say "Creating New App", :green
+    system "heroku create"
+    output = system "heroku app:info -s | grep ^name="
+    app_info = shell_to_hash output
+    domain_name = app_info["domain_name"]
+    app_name = app_info["name"]
+    if not app_name
+      say "*** Could not retrieve app name.", :red
+      return
+    end
+    say ""
+
+    say "Adding PostgreSQL Add-on", :green
+    system "heroku addons:add heroku-postgresql:hobby-dev"
+    say ""
+
+    say "Creating API Client", :green
+    system "heroku plugins:install https://github.com/heroku/heroku-oauth"
+    output = system "heroku clients:create -s \"hadashboard\""\
+      "https://#{app_name}.herokuapp.com/auth/heroku/callback"
+    client_auth = shell_to_hash output
+    say ""
+
+    say "Requesting SmartApp Credentials", :green
+    st_client_id = nil
+    loop do
+      st_client_id = ask "SmartApp OAuth Client ID"
+      break if validate_uuid st_client_id
+      say "*** Value entered is not a UUID. Typo?", :red
+    end
+
+    st_client_secret = nil
+    loop do
+      st_client_secret = ask "SmartApp OAuth Client Secret"
+      break if validate_uuid st_client_secret
+      say "*** Value entered is not a UUID. Typo?", :red
+    end
+    say ""
+
+    say "Configuring Heroku Variables", :green
+    cvars = ""
+    cvars << "DASHING_AUTH_TOKEN=" << SecureRandom.uuid << " "
+    cvars << "DASHING_URI=http://" << domain_name << " "
+    cvars << "HEROKU_OAUTH_EMAIL=" << username << " "
+    cvars << "HEROKU_OAUTH_ID=" << client_auth["HEROKU_OAUTH_ID"] << " "
+    cvars << "HEROKU_OAUTH_SECRET=" << client_auth["HEROKU_OAUTH_SECRET"] << " "
+    cvars << "SESSION_SECRET=" << SecureRandom.uuid << " "
+    cvars << "ST_CLIENT_ID=" << st_client_id << " "
+    cvars << "ST_CLIENT_SECRET=" << st_client_secret << " "
+    system "heroku config:set #{cvars}" 
+    say ""
+
+    say "Waiting for Database", :green
+    say "... this may take up to 5 minutes!", :green
+    system "heroku pg:wait"
+    say ""
+
+    say "Deploying App", :green
+    system "git push heroku master"
+    say ""
+
+    say "Opening App", :green
+    say "NOTE: Don't forget to authorize with the SmartApp at: "\
+      "#{domain_name}/smartthings/authorize", :green
+    system "heroku open"
+    say ""
+  end
+
+  private
+
+  def shell_to_hash(shell_output)
+    Hash[shell_output.each_line.map { |l| l.chomp.split "=", 2 }]
+  end
+
+  def validate_uuid(value)
+    (value =~ /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/) == 0
+  end
+
+end
+
+HADashboardCLI.start(ARGV)
