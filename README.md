@@ -188,14 +188,14 @@ When you have all the prereqs in place, edit the hapush.cfg file to reflect your
 ```
 ha_url = "http://192.168.1.10:8123"
 ha_key = api_key
-dash_host = "http://192.168.1.10:3030"
+dash_host = "192.168.1.10:3030"
 dash_dir = "/srv/hass/src/hadashboard/dashboards"
 logfile = "/etc/hapush/hapush.log"
 ```
 
 - `ha_url` is a reference to your home assistant installation and must include the correct port number and scheme (`http://` or `https://` as appropriate)
 - `ha_key` should be set to your key if you have one, otherwise it can be removed.
-- `dash_host` should be set to the IP address and port of the host you are running Dashing on - this should be the same machine as you are running Dashing on.
+- `dash_host` should be set to the IP address and port of the host you are running Dashing on (no http or https) - this should be the same machine as you are running Dashing on.
 - `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you clooned `hadashboard` to. 
 - `logfile` is the path to where you want `hapush` to keep its logs. When run from the command line this is not used - log messages come out on the terminal. When running as a daemon this is where the loginformation will go. In the example above I created a directory specifically for hapush to run from, although there is no reason you can't keep it in the `hapush` subdirectory of the cloned repository.
 
@@ -236,6 +236,10 @@ If all is well, you should start to see `hapush` responding to events as they oc
 To run Dashing and `hapush` at reboot, I have provided sample init scripts in the `./init` directory. These have been tested on a Raspberry PI - your mileage may vary on other systems.
 
 # Release Notes
+
+***Version 1.2***
+
+- Fix docs and excample cfg to remove scheme from `hapush` dash_host config variable
 
 ***Version 1.1*** 
 
