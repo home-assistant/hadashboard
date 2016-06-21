@@ -49,6 +49,13 @@ $ bundle
 
 Bundle will now install all the ruby prereqs for running dashing.
 
+Note: Prereqs will vary across different machines. So far users have reported requirements for some additional installs to allow the bundle to complete succesfully:
+
+- ruby-dev - `sudo apt-get install ruby-dev`
+- Postgress - `sudo apt-get install postgresql-9.4 postgresql-server-dev-9.4 libpq-dev sqlite libsqlite3-dev`
+
+You will need to research what works on your particular architecture and also bear in mind that version numbers may change over time.
+
 Next, in the `./lib` directory, copy the ha_conf.rb.example file to ha_conf.rb and edit its settings to reflect your installation, pointing to the machine Home Assistant is running on and adding your api_key.
 
 ```ruby
@@ -56,72 +63,19 @@ $ha_url = "http://192.168.1.10:8123"
 $ha_apikey = "your key"
 ```
 
-You can start a local webserver like this:
+- `$ha_url` is a reference to your home assistant installation and must include the correct port number and scheme (`http://` or `https://` as appropriate)
+- `$ha_apikey` should be set to your key if you have one, otherwise it can remain blank.
+
+When you are done, you can start a local webserver like this:
 
 ``` bash
 $ dashing start
 ```
 
-Point your browser to **http://localhost:3030** to access the hadashboard on your local machine. (see later for how to actually configure the dashboard)
+Point your browser to **http://localhost:3030** to access the hadashboard on your local machine.and you should see the supplied default dashboard.
 
-## Installing hapush
-
-`hapush` is a python daemon that listens to Home Assistant's Event Stream and pushes changes back to the dashboard to update it in real time. You may want to create a [Virtual Environment](https://docs.python.org/3/library/venv.html) for hapush - at the time of writing there is a conflict in the Event Source versions in use between HA and hapush.
-
-Before running `hapush` you will need to add some python prerequisites:
-
-```bash
-$ pip3 install daemonize
-$ pip3 install sseclient
-(Others - TBD)
-```
-
-When you have all the prereqs in place, edit the hapush.cfg file to reflect your environment:
-
-```
-ha_url = "http://192.168.1.10:8123"
-ha_key = api_key
-dash_host = "http://192.168.1.10:3030"
-dash_dir = "/srv/hass/src/hadashboard/dashboards"
-logfile = "/etc/hapush/hapush.log"
-```
-
-You can then run hapush from the command line as follows:
-
-```bash
-$ ./hapush.py hapush.cfg
-```
-
-If all is well, you should start to see `hapush` responding to events as they occur:
-
-```
-2016-06-19 10:05:59,693 INFO Reading dashboard: /srv/hass/src/hadashboard/dashboards/main.erb
-2016-06-19 10:06:12,362 INFO switch.wendy_bedside -> state = on, brightness = 50
-2016-06-19 10:06:13,334 INFO switch.andrew_bedside -> state = on, brightness = 50
-2016-06-19 10:06:13,910 INFO script.night -> Night
-2016-06-19 10:06:13,935 INFO script.night_quiet -> Night
-2016-06-19 10:06:13,959 INFO script.day -> Night
-2016-06-19 10:06:13,984 INFO script.evening -> Night
-2016-06-19 10:06:14,008 INFO input_select.house_mode -> Night
-2016-06-19 10:06:14,038 INFO script.morning -> Night
-2016-06-19 10:06:21,624 INFO script.night -> Day
-2016-06-19 10:06:21,649 INFO script.night_quiet -> Day
-2016-06-19 10:06:21,674 INFO script.day -> Day
-2016-06-19 10:06:21,698 INFO script.evening -> Day
-2016-06-19 10:06:21,724 INFO input_select.house_mode -> Day
-2016-06-19 10:06:21,748 INFO script.morning -> Day
-2016-06-19 10:06:31,084 INFO switch.andrew_bedside -> state = off, brightness = 30
-2016-06-19 10:06:32,501 INFO switch.wendy_bedside -> state = off, brightness = 30
-2016-06-19 10:06:52,280 INFO sensor.side_multisensor_luminance_25 -> 871.0
-2016-06-19 10:07:50,574 INFO sensor.side_temp_corrected -> 70.7
-2016-06-19 10:07:51,478 INFO sensor.side_multisensor_relative_humidity_25 -> 52.0
-2016-06-19 10:07:51,604 INFO sensor.side_humidity_corrected -> 72.0
-```
-
-# Starting At Reboot
-To run Dashing and `hapush` at reboot, I have provided sample init scripts in the `./init` directory. These have been tested on a Raspberry PI - your mileage may vary on other systems.
-# Changing Widgets
-The hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
+# Configuring The Dashboard
+Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
 
 Essentially, you will need to modify the `dashboards/main.erb` file to reference the items you want to display and control and get the layout that you want.
 
@@ -214,3 +168,81 @@ The divisions are implicitly numbered from 1 so it is a good idea to comment the
 You can also have multiple dashboards, by simply adding a new .erb file to the dashboards directory and navigating to the dashboards via `http://<IP address>:3030/dashboard-file-name-without-extension`
 
 For example, if you want to deploy multiple devices, you could have one dashboard per room and still only use one hadashboard app installation.
+
+## Installing hapush
+
+When you have the dashboard corretly displaying and interacting with Home Assistant you are ready to install the final component - `hapush`. Without `hapush` the dashboard would not respond to events that happen outside of the hadashboard system. For instance, if someone uses the Home Assistant interface to turn on a light, or even another App or physical switch, there is no way for the Dashboard to reflect this change. This is where `hapush` comes in.
+
+`hapush` is a python daemon that listens to Home Assistant's Event Stream and pushes changes back to the dashboard to update it in real time. You may want to create a [Virtual Environment](https://docs.python.org/3/library/venv.html) for hapush - at the time of writing there is a conflict in the Event Source versions in use between HA and hapush.
+
+Before running `hapush` you will need to add some python prerequisites:
+
+```bash
+$ pip3 install daemonize
+$ pip3 install sseclient
+(Others - TBD)
+```
+
+When you have all the prereqs in place, edit the hapush.cfg file to reflect your environment:
+
+```
+ha_url = "http://192.168.1.10:8123"
+ha_key = api_key
+dash_host = "http://192.168.1.10:3030"
+dash_dir = "/srv/hass/src/hadashboard/dashboards"
+logfile = "/etc/hapush/hapush.log"
+```
+
+- `ha_url` is a reference to your home assistant installation and must include the correct port number and scheme (`http://` or `https://` as appropriate)
+- `ha_key` should be set to your key if you have one, otherwise it can be removed.
+- `dash_host` should be set to the IP address and port of the host you are running Dashing on - this should be the same machine as you are running Dashing on.
+- `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you clooned `hadashboard` to. 
+- `logfile` is the path to where you want `hapush` to keep its logs. When run from the command line this is not used - log messages come out on the terminal. When running as a daemon this is where the loginformation will go. In the example above I created a directory specifically for hapush to run from, although there is no reason you can't keep it in the `hapush` subdirectory of the cloned repository.
+
+
+You can then run hapush from the command line as follows:
+
+```bash
+$ ./hapush.py hapush.cfg
+```
+
+If all is well, you should start to see `hapush` responding to events as they occur:
+
+```
+2016-06-19 10:05:59,693 INFO Reading dashboard: /srv/hass/src/hadashboard/dashboards/main.erb
+2016-06-19 10:06:12,362 INFO switch.wendy_bedside -> state = on, brightness = 50
+2016-06-19 10:06:13,334 INFO switch.andrew_bedside -> state = on, brightness = 50
+2016-06-19 10:06:13,910 INFO script.night -> Night
+2016-06-19 10:06:13,935 INFO script.night_quiet -> Night
+2016-06-19 10:06:13,959 INFO script.day -> Night
+2016-06-19 10:06:13,984 INFO script.evening -> Night
+2016-06-19 10:06:14,008 INFO input_select.house_mode -> Night
+2016-06-19 10:06:14,038 INFO script.morning -> Night
+2016-06-19 10:06:21,624 INFO script.night -> Day
+2016-06-19 10:06:21,649 INFO script.night_quiet -> Day
+2016-06-19 10:06:21,674 INFO script.day -> Day
+2016-06-19 10:06:21,698 INFO script.evening -> Day
+2016-06-19 10:06:21,724 INFO input_select.house_mode -> Day
+2016-06-19 10:06:21,748 INFO script.morning -> Day
+2016-06-19 10:06:31,084 INFO switch.andrew_bedside -> state = off, brightness = 30
+2016-06-19 10:06:32,501 INFO switch.wendy_bedside -> state = off, brightness = 30
+2016-06-19 10:06:52,280 INFO sensor.side_multisensor_luminance_25 -> 871.0
+2016-06-19 10:07:50,574 INFO sensor.side_temp_corrected -> 70.7
+2016-06-19 10:07:51,478 INFO sensor.side_multisensor_relative_humidity_25 -> 52.0
+2016-06-19 10:07:51,604 INFO sensor.side_humidity_corrected -> 72.0
+```
+
+# Starting At Reboot
+To run Dashing and `hapush` at reboot, I have provided sample init scripts in the `./init` directory. These have been tested on a Raspberry PI - your mileage may vary on other systems.
+
+# Release Notes
+
+***Version 1.1*** 
+
+- Expand instructions
+- Allow no api_key
+- Allow http connections
+
+***Version 1.0***
+
+Initial Release

@@ -8,8 +8,10 @@ $ha_api = $ha_url + "/api/"
 def ha_api(path, method, parameters={})
 	uri = URI.parse($ha_api + path)
 	http = Net::HTTP.new(uri.host, uri.port)
-	http.use_ssl = true
-	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  if uri.scheme == "https"
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  end
 	if method == "get"
 		request = Net::HTTP::Get.new(uri.request_uri)
 	else
