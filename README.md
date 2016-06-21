@@ -105,7 +105,7 @@ Note that although it is legal in XML terms to split the inner `<div>` like this
 
 This may break `hapush`'s parsing of the file, so keep to the line format first presented.
 
-The `Hascript` widget has a couple of extra parameters that allow you to link it with a specified `input_select` so that they will highlight the button for certain values of that input select. The usecase for this is that I maintain an `input_boolean` as a flag for the state of the house to simplify other automations. I use scripts to switch between the states, and this feature provides feedback as to the current state by lighting up the appropriate script button.
+The `Hascript` widget has a couple of extra parameters that allow you to link it with a specified `input_select` so that they will highlight the button for certain values of that input select. The usecase for this is that I maintain an `input_select` as a flag for the state of the house to simplify other automations. I use scripts to switch between the states, and this feature provides feedback as to the current state by lighting up the appropriate script button.
 
 A `Hascript` widget using this feature will look like this:
 
@@ -169,7 +169,7 @@ You can also have multiple dashboards, by simply adding a new .erb file to the d
 
 For example, if you want to deploy multiple devices, you could have one dashboard per room and still only use one hadashboard app installation.
 
-## Installing hapush
+# Installing hapush
 
 When you have the dashboard corretly displaying and interacting with Home Assistant you are ready to install the final component - `hapush`. Without `hapush` the dashboard would not respond to events that happen outside of the hadashboard system. For instance, if someone uses the Home Assistant interface to turn on a light, or even another App or physical switch, there is no way for the Dashboard to reflect this change. This is where `hapush` comes in.
 
@@ -195,9 +195,9 @@ logfile = "/etc/hapush/hapush.log"
 
 - `ha_url` is a reference to your home assistant installation and must include the correct port number and scheme (`http://` or `https://` as appropriate)
 - `ha_key` should be set to your key if you have one, otherwise it can be removed.
-- `dash_host` should be set to the IP address and port of the host you are running Dashing on (no http or https) - this should be the same machine as you are running Dashing on.
-- `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you clooned `hadashboard` to. 
-- `logfile` is the path to where you want `hapush` to keep its logs. When run from the command line this is not used - log messages come out on the terminal. When running as a daemon this is where the loginformation will go. In the example above I created a directory specifically for hapush to run from, although there is no reason you can't keep it in the `hapush` subdirectory of the cloned repository.
+- `dash_host` should be set to the IP address and port of the host you are running Dashing on (no http or https) - this should be the same machine as you are running `hapush` on.
+- `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you cloned `hadashboard` to. 
+- `logfile` is the path to where you want `hapush` to keep its logs. When run from the command line this is not used - log messages come out on the terminal. When running as a daemon this is where the log information will go. In the example above I created a directory specifically for hapush to run from, although there is no reason you can't keep it in the `hapush` subdirectory of the cloned repository.
 
 
 You can then run hapush from the command line as follows:
@@ -236,6 +236,10 @@ If all is well, you should start to see `hapush` responding to events as they oc
 To run Dashing and `hapush` at reboot, I have provided sample init scripts in the `./init` directory. These have been tested on a Raspberry PI - your mileage may vary on other systems.
 
 # Release Notes
+
+***Version 1.2.1***
+
+- Minor typos in README
 
 ***Version 1.2***
 
