@@ -113,7 +113,7 @@ def dashboard_update(widget_id, type, state):
     elif type == "light":
       astate = state['state']
       try:
-        brightness = roundup(state['attributes']['brightness']/2.55)
+        brightness = roundup(int(state['attributes']['brightness'])/2.55)
       except KeyError:
         brightness = 30
         astate = 'off'
