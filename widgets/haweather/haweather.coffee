@@ -22,5 +22,9 @@ class Dashing.Haweather extends Dashing.Widget
     set: (key, value) -> @_temp = value
 
   ready: ->
-
+    if @get('bgcolor')
+      $(@node).css("background-color", @get('bgcolor'))
+    else
+      $(@node).css("background-color", "#444")
+      
   onData: (data) ->

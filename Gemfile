@@ -3,11 +3,8 @@ ruby "2.1.5"
 
 gem 'dashing'
 gem 'thor'
-
-# Authentication
-gem 'oa-openid'
-gem 'omniauth-heroku', '~> 0.2.0.pre'
-gem 'oauth2'
+gem 'nokogiri'
+gem 'htmlentities'
 
 # REST
 gem 'unirest'
