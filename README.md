@@ -337,7 +337,7 @@ To run Dashing and `hapush` at reboot, I have provided sample init scripts in th
 To update the dashboard after I have released new code, just run the following command to update your copy:
 
 ```bash
-$ git fetch origin
+$ git pull origin
 ```
 
 For some releases you may also need to rerun the bundle command:
