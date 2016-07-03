@@ -53,8 +53,23 @@ Note: Prereqs will vary across different machines. So far users have reported re
 
 - ruby-dev - `sudo apt-get install ruby-dev`
 - Postgress - `sudo apt-get install postgresql-9.4 postgresql-server-dev-9.4 libpq-dev sqlite libsqlite3-dev`
+- node-js - `sudo apt-get install nodejs`
+- execjs gem - `gem install execjs`
 
 You will need to research what works on your particular architecture and also bear in mind that version numbers may change over time.
+
+Note: This is currently running on ruby version 2.1.5, and if you try to run with a different version you may get an error like:
+
+``
+Your Ruby version is 2.3.0, but your Gemfile specified 2.1.5
+``
+
+To fix this, you need to change the version of ruby specified in `Gemfile`, the directive is:
+```
+ruby "2.1.5"
+```
+
+In the example above you would need to change it to `2.3.0`. Note that this has not been tested by me and your mileage may vary if you use an arbitary version of ruby, however, the version above (`2.3.0`) has been reported to run correctly, and in most cases it should be fine.
 
 Next, in the `./lib` directory, copy the ha_conf.rb.example file to ha_conf.rb and edit its settings to reflect your installation, pointing to the machine Home Assistant is running on and adding your api_key.
 
@@ -77,7 +92,7 @@ Point your browser to **http://localhost:3030** to access the hadashboard on you
 # Configuring The Dashboard
 Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
 
-Essentially, you will need to modify the `dashboards/main.erb` file to reference the items you want to display and control and get the layout that you want.
+MNake a copy of  `dashboards/main.erb` and call it main.erb, then edit thif file to reference the items you want to display and control and to get the layout that you want.
 
 The basic anatomy of a widget is this:
 ``` html
@@ -105,6 +120,29 @@ Note that although it is legal in XML terms to split the inner `<div>` like this
 
 This may break `hapush`'s parsing of the file, so keep to the line format first presented.
 
+Please, refer to the Dashing website for instructions on how to change the grid and tile size, as well as more general instructions about widgets, their properties, and how to create new widgets.
+
+# Supported Widgets
+
+At this time I have provided support for the following Home Assistant entity types.
+
+
+## switch
+Widget type ***Haswitch***
+## devicetracker
+Widget type ***Hadevicetracker***
+## light
+Widget type  ***Hadimmer***
+## garage
+Widget type ***Hagarage***
+## input_boolean
+Widget type ***Hainputboolean***
+## scene
+Widget type ***Hascene***
+## script
+
+Widget type ***Hascript*** 
+
 The `Hascript` widget has a couple of extra parameters that allow you to link it with a specified `input_select` so that they will highlight the button for certain values of that input select. The usecase for this is that I maintain an `input_select` as a flag for the state of the house to simplify other automations. I use scripts to switch between the states, and this feature provides feedback as to the current state by lighting up the appropriate script button.
 
 A `Hascript` widget using this feature will look like this:
@@ -114,29 +152,77 @@ A `Hascript` widget using this feature will look like this:
       <div data-id="day" data-view="Hascript" data-title="Good Day" data-icon="sun-o" data-changemode="Day" data-input="house_mode"></div>
     </li>
 ```
+**data-changemode**: The value of the `input_select` for which this script button will light up 
 
-- **data-changemode**: The value of the `input_select` for which this script button will light up 
-- **data-input**: The `input_select` entity to use (minus the leading entity type)
+**data-input**: The `input_select` entity to use (minus the leading entity type)
 
-Please, refer to the Dashing website for instructions on how to change the grid and tile size, as well as more general instructions about widgets, their properties, and how to create new widgets.
+## input_select (read only)
+Widget type ***Hainputselect***
 
-# Supported Widgets
+## sensor (humidity)
+Widget type ***Hahumidity***
 
-At this time I have provided support for the following Home Assistant entity types:
+## sensor (humidity)
+Widget type ***Hahumiditymeter*** (contributed by [Shiv Chanders](https://community.home-assistant.io/users/chanders/activity))  
 
-- ***switch***: Widget type ***Haswitch***
-- ***devicetracker***: Widget type ***Hadevicetracker***
-- ***light***: Widget type  ***Hadimmer***
-- ***garage***: Widget type ***Hagarage***
-- ***input_boolean***: Widget type ***Hainputboolean***
-- ***scene***: Widget type ***Hascene***
-- ***script***: Widget type ***Hascript***
-- ***input_select (read only)***: Widget type ***Hainputselect***
-- ***sensor (humidity)***: Widget type ***Hahumidity***
-- ***sensor (luminance)***: Widget type ***Halux***
-- ***sensor (motion)***: Widget type ***Hamotion***
-- ***sensor (temperature)***: Widget type ***Hatemp***
-- ***weather (requires forecast.io)***: Widget type ***Haweather***
+This is an alternative to the the text based humidity widget above, it display the humidity as an animated meter from 0 to 100%.
+
+## sensor (luminance)
+Widget type ***Halux***
+## sensor (motion)
+Widget type ***Hamotion***
+
+## sensor (temperature)
+Widget type ***Hatemp***  
+
+The Hatemp widget supports an additional paramater  `data-unit` - this allows you to set the unit to whatever you want - Centigrade, Farenheight or even Kelvin if you prefer ;) You will need to explicitly include the degree symbol like this:
+```html
+data-unit="&deg;F"
+```
+If omitted, no units will be shown.
+
+## weather (requires forecast.io)
+
+Widget type ***Haweather***
+
+In order to use the weather widget you must configure the forecast.io component, and ensure that you configure at least the following monitored conditions in your Home Assistant sensor config:
+
+- weather_temperature
+- weather_humidity
+- weather_precip_probability
+- weather_precip_intensity
+- weather_wind_speed
+- weather_pressure
+- weather_wind_bearing
+- weather_apparent_temperature
+- weather_icon
+
+The `data-id` of the Haweather widget must be set to `weather` or the widget will not work.
+
+The Haweather widget supports an optional `data-bgcolor` - the background color of the widget. This can be used to make the feed stand out from other tiles if required, the default is the standard grey like the rest of the widgets.
+## news
+Widget type ***News*** (contributed by [KRiS](https://community.home-assistant.io/users/kris/activity))  
+
+This is an RSS widget that can be used for displaying travel information, news etc. on the dashboard. The RSS feed will update every 6o minutes. To configure this, first it is necessary to add your desired feeds in `homeassistant/lib/ha_conf.rb` in the `$news_feeds` section. By default it comes with 2 sample feeds:
+```ruby
+$news_feeds = {
+  "Traffic" => "http://api.sr.se/api/rss/traffic/2863",
+  "News" => "http://feeds.bbci.co.uk/news/rss.xml",
+}
+```
+You can add as many as you want. The important point is that the key value (e.g. "Traffic" or "News" in the example above is used to tie the feed to your widget in the dashboard file. Here is an example of the Traffic widget that displays the first feed in the list:
+
+```html
+	<li data-row="3" data-col="2" data-sizex="2" data-sizey="2">
+      <div data-id="Traffic" data-view="News" data-title="Traffic" data-interval="30" data-bgcolor="#643EBF">
+    </li>
+```
+The value of thee `data-id` tag must match the key value in the `$news_feeds` configuration.
+
+- ***data-interval*** (optional) - the time in seconds that each entry in the RSS feed is displayed before the next one is shown, default is 30 seconds.
+- ***data-bgcolor*** (optional) - the background color of the widget. This can be used to make the feed stand out from other tiles if required, the default is the standard grey like the rest of the widgets.
+
+# Changes and Restarting
 
 When you make changes to a dashboard, Dashing and `hapush` will both automatically reload and apply the changes without a need to restart.
 
@@ -178,10 +264,23 @@ When you have the dashboard corretly displaying and interacting with Home Assist
 Before running `hapush` you will need to add some python prerequisites:
 
 ```bash
-$ pip3 install daemonize
-$ pip3 install sseclient
-(Others - TBD)
+$ sudo pip3 install daemonize
+$ sudo pip3 install sseclient
+$ sudo pip3 install configobj
 ```
+
+Some users are reporting errors with `InsecureRequestWarning`:
+```
+Traceback (most recent call last):
+  File "./hapush.py", line 21, in <module>
+    from requests.packages.urllib3.exceptions import InsecureRequestWarning
+ImportError: cannot import name 'InsecureRequestWarning'
+```
+This can be fixed with:
+```
+$ sudo pip3 install requests==2.6.0
+```
+
 
 When you have all the prereqs in place, edit the hapush.cfg file to reflect your environment:
 
@@ -235,7 +334,28 @@ If all is well, you should start to see `hapush` responding to events as they oc
 # Starting At Reboot
 To run Dashing and `hapush` at reboot, I have provided sample init scripts in the `./init` directory. These have been tested on a Raspberry PI - your mileage may vary on other systems.
 
+# Updating The Dashboard
+To update the dashboard after I have released new code, just run the following command to update your copy:
+
+```bash
+$ git fetch origin
+```
+
+For some releases you may also need to rerun the bundle command:
+``` bash
+$ bundle
+```
 # Release Notes
+
+***Version 1.3***
+
+- Merge RSS widget contributed by [KRiS](https://community.home-assistant.io/users/kris/activity)
+- Merge Hahumiditymeter contributed by [Shiv Chanders](https://community.home-assistant.io/users/chanders/activity)
+- Allow temperature unit to be specified in the dasboard
+- Remove main.erb and replace it with example.erb
+- Update README to reflect new widgets
+- Update README with additional install notes
+- Update README with section on updating the dashboard
 
 ***Version 1.2.1***
 
