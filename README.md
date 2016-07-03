@@ -328,7 +328,6 @@ If all is well, you should start to see `hapush` responding to events as they oc
 2016-06-19 10:06:52,280 INFO sensor.side_multisensor_luminance_25 -> 871.0
 2016-06-19 10:07:50,574 INFO sensor.side_temp_corrected -> 70.7
 2016-06-19 10:07:51,478 INFO sensor.side_multisensor_relative_humidity_25 -> 52.0
-2016-06-19 10:07:51,604 INFO sensor.side_humidity_corrected -> 72.0
 ```
 
 # Starting At Reboot
