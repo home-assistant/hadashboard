@@ -356,7 +356,7 @@ $ bundle
 ***Version 1.3.2***
 
 - Script buttons now light up for a configurable period when activated
-- In order to accomadate the above change, functionality to run scripts and track the state of an input_select has been broken out into a new widget called `Hamode`
+- In order to accommodate the above change, functionality to run scripts and track the state of an input_select has been broken out into a new widget called `Hamode`
 
 *Breaking Changes*
 
