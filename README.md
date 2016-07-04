@@ -360,7 +360,7 @@ $ bundle
 
 *Breaking Changes*
 
-- Hascript no longer has the ability to track and display the state of an input_slelect. If you were using this functionality, change the type of your script to `Hamode`
+- Hascript no longer has the ability to track and display the state of an input_slelect. If you were using this functionality, change the type of your widget to `Hamode`
 
 
 ***Version 1.3.1***
