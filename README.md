@@ -146,13 +146,17 @@ Widget type ***Hascene***
 
 Widget type ***Hascript*** 
 
-The `Hascript` widget has a couple of extra parameters that allow you to link it with a specified `input_select` so that they will highlight the button for certain values of that input select. The usecase for this is that I maintain an `input_select` as a flag for the state of the house to simplify other automations. I use scripts to switch between the states, and this feature provides feedback as to the current state by lighting up the appropriate script button.
+**data-ontime** (optional): The amount of time the scene icon lights up when pressed, in milliseconds, default 1000.
 
-A `Hascript` widget using this feature will look like this:
+## mode
+
+The `Hamode` widget alows you to run a script on activation and to link it with a specified `input_select` so the button will be highlighted for certain values of that input select. The usecase for this is that I maintain an `input_select` as a flag for the state of the house to simplify other automations. I use scripts to switch between the states, and this feature provides feedback as to the current state by lighting up the appropriate mode button.
+
+A `Hamode` widget using this feature will look like this:
 
 ```html
 <li data-row="5" data-col="3" data-sizex="2" data-sizey="1">
-      <div data-id="day" data-view="Hascript" data-title="Good Day" data-icon="sun-o" data-changemode="Day" data-input="house_mode"></div>
+      <div data-id="day" data-view="Hamode" data-title="Good Day" data-icon="sun-o" data-changemode="Day" data-input="house_mode"></div>
     </li>
 ```
 **data-changemode**: The value of the `input_select` for which this script button will light up 
@@ -349,6 +353,16 @@ $ bundle
 ```
 # Release Notes
 
+***Version 1.3.2***
+
+- Script buttons now light up for a configurable period when activated
+- In order to accomadate the above change, functionality to run scripts and track the state of an input_select has been broken out into a new widget called `Hamode`
+
+*Breaking Changes*
+
+- Hascript no longer has the ability to track and siaply the state of an input_slelect. If you were using this functionality, change the type of your script to `Hamode`
+
+
 ***Version 1.3.1***
 
 - Scene buttons now light up for a configurable period when activated
@@ -362,6 +376,10 @@ $ bundle
 - Update README to reflect new widgets
 - Update README with additional install notes
 - Update README with section on updating the dashboard
+
+*Breaking Changes*
+
+Previously temperature units defaulted to Fahrenheit - now there is no default, you must explicitly specify it in the Hatemp widget or you will get no units at all.
 
 ***Version 1.2.1***
 

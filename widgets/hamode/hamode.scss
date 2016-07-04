@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // Widget-stmode styles
 // ----------------------------------------------------------------------------
-.widget-hascript {
+.widget-hamode {
 
   background-color: #444 !important;
 
@@ -18,12 +18,16 @@
   	height: 75px;
   }
 
-  .icon {
+  .icon, .timer {
   	position: absolute;
   	top: 0;
   	left: 0;
   	width: 100%;
   	height: 100%;
+  }
+
+  .timer {
+  	z-index: 1;
   }
 
   .icon-inactive {
