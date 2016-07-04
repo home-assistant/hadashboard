@@ -233,7 +233,7 @@ The value of thee `data-id` tag must match the key value in the `$news_feeds` co
 
 When you make changes to a dashboard, Dashing and `hapush` will both automatically reload and apply the changes without a need to restart.
 
-Note: The first time you start Dashing, it can take up to a minute for the initial comilation of the pages to occur. You might get a timeout from your browser. If this occurs, be patient and reload. Subsequent reloads will be a lot quicker.
+Note: The first time you start Dashing, it can take up to a minute for the initial compilation of the pages to occur. You might get a timeout from your browser. If this occurs, be patient and reload. Subsequent reloads will be a lot quicker.
 
 # Multiple Pages
 
