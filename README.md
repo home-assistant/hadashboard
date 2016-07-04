@@ -138,7 +138,10 @@ Widget type ***Hagarage***
 ## input_boolean
 Widget type ***Hainputboolean***
 ## scene
-Widget type ***Hascene***
+Widget type ***Hascene***  
+
+**data-ontime** (optional): The amount of time the scene icon lights up when pressed, in milliseconds, default 1000.
+
 ## script
 
 Widget type ***Hascript*** 
@@ -345,6 +348,10 @@ For some releases you may also need to rerun the bundle command:
 $ bundle
 ```
 # Release Notes
+
+***Version 1.3.1***
+
+- Scene buttons now light up for a configurable period when activated
 
 ***Version 1.3***
 
