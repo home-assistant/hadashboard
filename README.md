@@ -92,7 +92,7 @@ Point your browser to **http://localhost:3030** to access the hadashboard on you
 # Configuring The Dashboard
 Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
 
-MNake a copy of  `dashboards/main.erb` and call it main.erb, then edit thif file to reference the items you want to display and control and to get the layout that you want.
+Make a copy of  `dashboards/main.erb` and call it main.erb, then edit this file to reference the items you want to display and control and to get the layout that you want.
 
 The basic anatomy of a widget is this:
 ``` html
