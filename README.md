@@ -220,9 +220,9 @@ $news_feeds = {
 You can add as many as you want. The important point is that the key value (e.g. "Traffic" or "News" in the example above is used to tie the feed to your widget in the dashboard file. Here is an example of the Traffic widget that displays the first feed in the list:
 
 ```html
-	<li data-row="3" data-col="2" data-sizex="2" data-sizey="2">
-      <div data-id="Traffic" data-view="News" data-title="Traffic" data-interval="30" data-bgcolor="#643EBF">
-    </li>
+<li data-row="3" data-col="2" data-sizex="2" data-sizey="2">
+  <div data-id="Traffic" data-view="News" data-title="Traffic" data-interval="30" data-bgcolor="#643EBF">
+</li>
 ```
 The value of thee `data-id` tag must match the key value in the `$news_feeds` configuration.
 
@@ -241,10 +241,10 @@ It is possible to have multiple pages within a dashboard. To do this, you can ad
 
 ```html
 <div class="gridster"> <!-- Main Panel - PAGE 1 -->
-<some widgets>
+  <some widgets>
 </div
 <div class="gridster"> <!-- More Stuff - PAGE 2 -->
-<more widgets>
+  <more widgets>
 </div
 ```
 
