@@ -1,2 +1,8 @@
 $ha_url = "http://192.168.1.10:8123"
 $ha_apikey = "ha key"
+
+$news_feeds = {
+  "Traffic" => "http://api.sr.se/api/rss/traffic/2863",
+  "News" => "http://feeds.bbci.co.uk/news/rss.xml",
+}
+

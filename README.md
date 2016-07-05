@@ -81,6 +81,17 @@ $ha_apikey = "your key"
 - `$ha_url` is a reference to your home assistant installation and must include the correct port number and scheme (`http://` or `https://` as appropriate)
 - `$ha_apikey` should be set to your key if you have one, otherwise it can remain blank.
 
+The file also contains example newsfeeds for the News widget:
+
+```ruby
+$news_feeds = {
+  "Traffic" => "http://api.sr.se/api/rss/traffic/2863",
+  "News" => "http://feeds.bbci.co.uk/news/rss.xml",
+}
+```
+
+You can leave these alone for now or if you prefer customize them as described in the New widget section below.
+
 When you are done, you can start a local webserver like this:
 
 ``` bash
