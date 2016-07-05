@@ -264,7 +264,7 @@ For example, if you want to deploy multiple devices, you could have one dashboar
 
 # Installing hapush
 
-When you have the dashboard corretly displaying and interacting with Home Assistant you are ready to install the final component - `hapush`. Without `hapush` the dashboard would not respond to events that happen outside of the hadashboard system. For instance, if someone uses the Home Assistant interface to turn on a light, or even another App or physical switch, there is no way for the Dashboard to reflect this change. This is where `hapush` comes in.
+When you have the dashboard correctly displaying and interacting with Home Assistant you are ready to install the final component - `hapush`. Without `hapush` the dashboard would not respond to events that happen outside of the hadashboard system. For instance, if someone uses the Home Assistant interface to turn on a light, or even another App or physical switch, there is no way for the Dashboard to reflect this change. This is where `hapush` comes in.
 
 `hapush` is a python daemon that listens to Home Assistant's Event Stream and pushes changes back to the dashboard to update it in real time. You may want to create a [Virtual Environment](https://docs.python.org/3/library/venv.html) for hapush - at the time of writing there is a conflict in the Event Source versions in use between HA and hapush.
 
