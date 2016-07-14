@@ -62,6 +62,23 @@ post '/homeassistant/garage' do
 	return respondWithSuccess()
 end
 
+get '/homeassistant/lock' do
+	response = ha_api("states/lock." + params["widgetId"], "get")
+	return JSON.generate({"state" => response["state"]})
+end
+
+post '/homeassistant/lock' do
+	entity_id = "lock." + params["widgetId"]
+	command = "lock"
+	if params["command"] == "unlock" 
+		command = "unlock"
+	else
+		command = "lock"
+	end
+	ha_api("services/lock/" + command, "post", {"entity_id" => entity_id})
+	return respondWithSuccess()
+end
+
 get '/homeassistant/script' do
 	response = ha_api("states/input_select." + params["input"], "get")
 	return JSON.generate({"mode" => response["state"]})
