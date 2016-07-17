@@ -124,6 +124,10 @@ def dashboard_update(widget_id, type, state):
       values = {"state": state['state']}
       logger.info("garage_door." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
+    elif type == "lock":
+      values = {"state": state['state']}
+      logger.info("lock." + widget_id + " -> " + state['state'])
+      call_ha(widget_id, values)
     elif type == "script":
       values = {"mode": state['state']}
       logger.info("script." + widget_id + " -> " + state['state'])
@@ -138,6 +142,7 @@ def translate_view(view):
   views = {
         "Hadevicetracker": "device_tracker",
         "Hagarage": "garage_door",
+        "Halock": "lock",
         "Hainputboolean": "input_boolean",
         "Halux": "sensor",
         "Hascene": "scene",
@@ -146,7 +151,7 @@ def translate_view(view):
         "Hahumidity": "sensor",
         "Hainputselect": "input_select",
         "Hamotion": "binary_sensor",
-        "Hamode": "script",
+        "Hascript": "script",
         "Hatemp": "sensor",
       }
   if view in views:
