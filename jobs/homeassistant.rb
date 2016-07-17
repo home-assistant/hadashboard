@@ -165,6 +165,11 @@ post '/homeassistant/inputboolean' do
 	return respondWithSuccess()
 end
 
+get '/homeassistant/sensor' do
+	response = ha_api("states/sensor." + params["widgetId"], "get")
+	return JSON.generate({"value" => response["state"]})
+end
+
 get '/homeassistant/temperature' do
 	response = ha_api("states/sensor." + params["widgetId"], "get")
 	return JSON.generate({"value" => response["state"]})
