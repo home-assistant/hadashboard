@@ -177,29 +177,29 @@ A `Hamode` widget using this feature will look like this:
 ## input_select (read only)
 Widget type ***Hainputselect***
 
-## sensor (humidity)
-Widget type ***Hahumidity***
+## sensor
+Widget type ***Hasensor***  
 
-## sensor (humidity)
-Widget type ***Hahumiditymeter*** (contributed by [Shiv Chanders](https://community.home-assistant.io/users/chanders/activity))  
+Text based output of the value of a particular sensor.
 
-This is an alternative to the the text based humidity widget above, it display the humidity as an animated meter from 0 to 100%.
-
-## sensor (luminance)
-Widget type ***Halux***
-## sensor (motion)
-Widget type ***Hamotion***
-
-## sensor (temperature)
-Widget type ***Hatemp***  
-
-The Hatemp widget supports an additional paramater  `data-unit` - this allows you to set the unit to whatever you want - Centigrade, Farenheight or even Kelvin if you prefer ;) You will need to explicitly include the degree symbol like this:
+The Hasensor widget supports an additional paramater  `data-unit` - this allows you to set the unit to whatever you want - Centigrade, %, lux or whatever you need for the sensor in question. For a temperature sensor you will need to explicitly include the degree symbol like this:
 ```html
 data-unit="&deg;F"
 ```
 If omitted, no units will be shown.
 
-## weather (requires forecast.io)
+## sensor
+Widget type ***Hameter***  
+
+An alternative to the text based `Hasensor` that works for numeric values only.
+
+The Hameter widget supports an additional paramater  `data-unit` - this allows you to set the unit to whatever you want - Centigrade, %, lux or whatever you need for the sensor in question. For a temperature sensor you will need to explicitly include the degree symbol like this:
+```html
+data-unit="&deg;F"
+```
+If omitted, no units will be shown.
+
+# weather (requires forecast.io)
 
 Widget type ***Haweather***
 
@@ -239,6 +239,31 @@ The value of thee `data-id` tag must match the key value in the `$news_feeds` co
 
 - ***data-interval*** (optional) - the time in seconds that each entry in the RSS feed is displayed before the next one is shown, default is 30 seconds.
 - ***data-bgcolor*** (optional) - the background color of the widget. This can be used to make the feed stand out from other tiles if required, the default is the standard grey like the rest of the widgets.
+
+
+***The follwing widget types have been deprecated in favor of the more flexible `Hasensor` and `Hameter` widgets. They will be removed in a future release.***
+
+## sensor (humidity)
+Widget type ***Hahumidity***
+
+## sensor (humidity)
+Widget type ***Hahumiditymeter*** (contributed by [Shiv Chanders](https://community.home-assistant.io/users/chanders/activity))  
+
+This is an alternative to the the text based humidity widget above, it display the humidity as an animated meter from 0 to 100%.
+
+## sensor (luminance)
+Widget type ***Halux***
+## sensor (motion)
+Widget type ***Hamotion***
+
+## sensor (temperature)
+Widget type ***Hatemp***  
+
+The Hatemp widget supports an additional paramater  `data-unit` - this allows you to set the unit to whatever you want - Centigrade, Farenheight or even Kelvin if you prefer ;) You will need to explicitly include the degree symbol like this:
+```html
+data-unit="&deg;F"
+```
+If omitted, no units will be shown.
 
 # Changes and Restarting
 
@@ -296,7 +321,7 @@ ImportError: cannot import name 'InsecureRequestWarning'
 ```
 This can be fixed with:
 ```
-$ sudo pip3 install requests==2.6.0
+$ sudo pip3 install --upgrade requests
 ```
 
 
@@ -363,6 +388,16 @@ For some releases you may also need to rerun the bundle command:
 $ bundle
 ```
 # Release Notes
+
+***Version 1.4***
+
+- Addition of Halock contributed by [jwl173305361](https://community.home-assistant.io/users/jwl173305361/activity)
+- Addition of Hasensor
+- Addition of Hameter
+
+*Breaking Changes*
+
+None, however, Hasensor is intended as a replacement for Hatemp, Hahumidity and Halux, which are now deprecared and will be removed in a future release. Similarly, Hameter is intended to replace Hahumiditymeter.
 
 ***Version 1.3.2***
 

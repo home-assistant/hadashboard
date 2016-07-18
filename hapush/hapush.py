@@ -151,8 +151,9 @@ def translate_view(view):
         "Hahumidity": "sensor",
         "Hainputselect": "input_select",
         "Hamotion": "binary_sensor",
-        "Hascript": "script",
+        "Hamode": "script",
         "Hatemp": "sensor",
+        "Hasensor": "sensor"
       }
   if view in views:
     return views[view]
@@ -200,6 +201,8 @@ def readDash(file):
         if (data_input):
           # If we have a data-input this is a special case of a script that shows status based on an input_select
           # We need to register it as interested in events from that input select
+          if not "input_select" in widgets:
+            widgets["input_select"] = {}
           if not data_input in widgets["input_select"]:
             widgets["input_select"][data_input] = {}
           widgets["input_select"][data_input][data_id] = data_view
