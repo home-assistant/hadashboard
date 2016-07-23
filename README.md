@@ -140,6 +140,8 @@ At this time I have provided support for the following Home Assistant entity typ
 
 ## switch
 Widget type ***Haswitch***
+## lock
+Widget type ***Halock***
 ## devicetracker
 Widget type ***Hadevicetracker***
 ## light
@@ -198,6 +200,11 @@ The Hameter widget supports an additional paramater  `data-unit` - this allows y
 data-unit="&deg;F"
 ```
 If omitted, no units will be shown.
+
+## group
+Widget type ***Hagroup***
+
+The Hagroup widget uses the homeassistant/turn_on and homeassistant/turn_off API call, so certain functionality will be lost.  For example, you will not be able to use control groups of locks or dim lights.
 
 # weather (requires forecast.io)
 
