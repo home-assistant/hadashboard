@@ -20,6 +20,10 @@ class Dashing.Hameter extends Dashing.Widget
         @set 'value', json.value
 
   ready: ->
+    if @get('bgcolor')
+      $(@node).css("background-color", @get('bgcolor'))
+    else
+      $(@node).css("background-color", "#444")
     meter = $(@node).find(".meter")
     meter.attr("data-bgcolor", meter.css("background-color"))
     meter.attr("data-fgcolor", meter.css("color"))

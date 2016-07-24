@@ -13,6 +13,10 @@ class Dashing.Hascript extends Dashing.ClickableWidget
     set: Batman.Property.defaultAccessor.set
 
   ready: ->
+    if @get('bgcolor')
+      $(@node).css("background-color", @get('bgcolor'))
+    else
+      $(@node).css("background-color", "#444")
 
   turnOff: =>
     state = 'off'

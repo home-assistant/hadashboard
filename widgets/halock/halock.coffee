@@ -36,6 +36,10 @@ class Dashing.Halock extends Dashing.ClickableWidget
         if json.error != 0
           @toggleState()
   ready: ->
+    if @get('bgcolor')
+      $(@node).css("background-color", @get('bgcolor'))
+    else
+      $(@node).css("background-color", "#444")
 
   onData: (data) ->
 

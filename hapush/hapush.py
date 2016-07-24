@@ -91,8 +91,8 @@ def dashboard_update(widget_id, type, state):
       logger.info("switch." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
     elif type == "group":
-      values = {"value": state['state']}
-      logger.info("input_select." + widget_id + " -> " + state['state'])
+      values = {"state": state['state']}
+      logger.info("group." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
     elif type == "device_tracker":
       values = {"state": state['state']}

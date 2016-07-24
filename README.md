@@ -117,6 +117,7 @@ The basic anatomy of a widget is this:
 - **data-view**: The type of widget to be used (Haswitch, Hadimmer, Hatemp etc.)
 - **data-icon**: The icon displayed on the tile. See http://fontawesome.io for an icon cheatsheet.
 - **data-title**: The title to be displayed on the tile. 
+- ***data-bgcolor*** (optional) - the background color of the widget.
 
 Note that although it is legal in XML terms to split the inner `<div>` like this:
 
@@ -245,7 +246,6 @@ You can add as many as you want. The important point is that the key value (e.g.
 The value of thee `data-id` tag must match the key value in the `$news_feeds` configuration.
 
 - ***data-interval*** (optional) - the time in seconds that each entry in the RSS feed is displayed before the next one is shown, default is 30 seconds.
-- ***data-bgcolor*** (optional) - the background color of the widget. This can be used to make the feed stand out from other tiles if required, the default is the standard grey like the rest of the widgets.
 
 
 ***The follwing widget types have been deprecated in favor of the more flexible `Hasensor` and `Hameter` widgets. They will be removed in a future release.***
@@ -395,6 +395,11 @@ For some releases you may also need to rerun the bundle command:
 $ bundle
 ```
 # Release Notes
+
+***Version 1.5***
+
+- Merge Hagroup contributed by [jwl173305361](https://community.home-assistant.io/users/jwl173305361/activity)
+- Add background color support for all widgets
 
 ***Version 1.4***
 

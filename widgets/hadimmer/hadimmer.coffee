@@ -87,7 +87,10 @@ class Dashing.Hadimmer extends Dashing.ClickableWidget
         json = JSON.parse data
 
   ready: ->
-
+    if @get('bgcolor')
+      $(@node).css("background-color", @get('bgcolor'))
+    else
+      $(@node).css("background-color", "#444")
   onData: (data) ->
 
   onClick: (event) ->
