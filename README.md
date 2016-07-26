@@ -395,7 +395,7 @@ For some releases you may also need to rerun the bundle command:
 $ bundle
 ```
 # Release Notes
-***Version ????***
+***Version 1.5.1***
 
 - Fixed an issue with Float conversions on a weather field
 
