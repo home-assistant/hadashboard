@@ -229,7 +229,6 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
 	
 	response = ha_api("states/sensor.weather_apparent_temperature", "get")
 	tempchill = response["state"]
-	chill = Integer(Float(temp) - Float(tempchill) + 0.5)
 	
 	response = ha_api("states/sensor.weather_icon", "get")
 	icon = response["state"].gsub(/-/, '_')
@@ -239,7 +238,7 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
 		temp: temp,
 		humidity: humidity,
 		icon: icon,
-		tempchill: chill,
+		tempchill: tempchill,
 		precipintensity: precipintensity,
 		precip: precip,
 		windspeed: windspeed,

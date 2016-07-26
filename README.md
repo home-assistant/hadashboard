@@ -395,6 +395,13 @@ For some releases you may also need to rerun the bundle command:
 $ bundle
 ```
 # Release Notes
+***Version ????***
+
+- Fixed an issue with Float conversions on a weather field
+
+*Changes in behavior*
+
+`Wind Chill` on the weather widget has been replaced by `Apparent Temperature` whcih is now passed straight through from the sensor value.
 
 ***Version 1.5***
 
