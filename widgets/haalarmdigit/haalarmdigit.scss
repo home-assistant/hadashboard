@@ -1,0 +1,49 @@
+// ----------------------------------------------------------------------------
+// Widget-stmode styles
+// ----------------------------------------------------------------------------
+.widget-haalarmdigit {
+
+  background-color: #444;
+
+  .title {
+    padding-top: 10px;
+    font-size: 225%;
+    font-weight: 500;
+    color: #999999;
+  }
+
+  i {
+      font-style: normal;
+  }
+
+  .container {
+      position: relative;
+      height: 65px;
+  }
+
+  .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+  .icon-inactive {
+    color: #888888;
+  }
+
+  .icon-active {
+    color: #aaff00;
+  }
+
+  .title-inactive {
+    color: #999999;
+  }
+
+  .title-active {
+    color: #aaff00;
+  }
+
+}
+
