@@ -29,8 +29,8 @@ class Dashing.Haalarmdigit extends Dashing.ClickableWidget
   
   postScene: ->
     $.post '/homeassistant/alarm_control_panel_digit',
-      widgetId: @get('id'),
-      entityId: @get('entityid'),
+      digit: @get('digit'),
+      alarmEntity: @get('alarmentity'),
       (data) =>
         json = JSON.parse data
         if json.error != 0

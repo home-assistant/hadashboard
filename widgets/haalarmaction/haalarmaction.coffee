@@ -29,7 +29,7 @@ class Dashing.Haalarmaction extends Dashing.ClickableWidget
   
   postScene: ->
     $.post '/homeassistant/alarm_control_panel_action',
-      widgetId: @get('id'),
+      action: @get('action'),
       (data) =>
         json = JSON.parse data
         if json.error != 0

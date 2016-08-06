@@ -5,7 +5,19 @@ class Dashing.Haalarmstatus extends Dashing.Widget
 
   @accessor 'value',
     get: -> @_value ? 'UNKNOWN'
-    set: (key, value) -> @_value = value
+    set: (key, value) -> 
+      if value == "disarmed"
+        @_value = "DISARMED"
+      else if value == "pending"
+        @_value = "PENDING"
+      else if value == "armed_home"
+        @_value = "ARMED (HOME)"
+      else if value == "armed_away"
+        @_value = "ARMED (AWAY)"
+      else if value == "triggered"
+        @_value = "TRIGGERED"
+      else
+        @_value = value
 
   queryState: ->
     $.get '/homeassistant/alarm_control_panel_status',
