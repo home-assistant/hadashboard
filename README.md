@@ -209,7 +209,7 @@ The Hagroup widget uses the homeassistant/turn_on and homeassistant/turn_off API
 
 # Alarm Control Panel
 
-These widgets allow the user to create a working control panel that can be used to control the Manual Alarm Control Panel component (https://home-assistant.io/components/alarm_control_panel.manual).
+These widgets allow the user to create a working control panel that can be used to control the Manual Alarm Control Panel component (https://home-assistant.io/components/alarm_control_panel.manual). The example dashboard contains an arrangement similar to this:
 
 ![UI](images/alarm_panel.png)
 
