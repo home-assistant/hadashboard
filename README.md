@@ -207,6 +207,32 @@ Widget type ***Hagroup***
 
 The Hagroup widget uses the homeassistant/turn_on and homeassistant/turn_off API call, so certain functionality will be lost.  For example, you will not be able to use control groups of locks or dim lights.
 
+# Alarm Control Panel
+
+These widgets allow the user to create a working control panel that can be used to control the Manual Alarm Control Panel component (https://home-assistant.io/components/alarm_control_panel.manual).
+
+![UI](images/alarm_panel.png)
+
+Widget type ***Haalarmstatus***
+
+The Haalarmstatus widget displays the current status of the alarm_control_panel entity. It will also display the code as it is being entered by the user.
+
+The data-id must be the same as the alarm_control_panel entity_id in Home Assistant.
+
+Widget type ***Haalarmdigit***
+
+The Haalarmdigit widget is used to create the numeric keypad for entering alarm codes.
+
+data-digit holds the numeric value you wish to enter. The special value of "-" creates a 'clear' button which will wipe the code and return the Haalarmstatus widget display back to the current alarm state.
+
+data-alarmentity holds the data-id of the Haalarmstatus widget, so that the status widget can be correctly updated. It is mandatory for a 'clear' type digit and optional for normal numeric buttons.
+
+Widget type ***Haalarmaction***
+
+The Haalarmaction widget creates the arm/disarm/trigger buttons. Bear in mind that alarm triggering does not require a code, so you may not want to put this button near the other buttons in case it is pressed accidentally.
+
+data-action must contain one of the following: arm_home/arm_away/trigger/disarm.
+
 # weather (requires forecast.io)
 
 Widget type ***Haweather***
