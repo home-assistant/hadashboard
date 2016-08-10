@@ -11,6 +11,8 @@ RUN apt-get update \
       libssl-dev \
       libsqlite3-dev \
       ruby-dev \
+      python3 \
+      python3-pip \
  && mkdir /app \
  && rm -rf /var/lib/apt/lists/*
 
@@ -19,10 +21,13 @@ COPY . .
 
 RUN gem install dashing \
  && gem install bundler \
- && bundle
+ && bundle \
+ && pip3 install daemonize sseclient configobj \
+ && pip3 install --upgrade requests
+
 
 EXPOSE 3030
 
-VOLUME /app/lib /app/dashboards
+VOLUME /app/lib /app/dashboards /app/hapush
 
 CMD dashing start
