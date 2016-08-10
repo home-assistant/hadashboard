@@ -30,4 +30,4 @@ EXPOSE 3030
 
 VOLUME /app/lib /app/dashboards /app/hapush
 
-CMD dashing start
+CMD /app/hapush/hapush.py -d /app/hapush/hapush.cfg && dashing start
