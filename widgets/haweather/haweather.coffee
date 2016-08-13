@@ -26,9 +26,9 @@ class Dashing.Haweather extends Dashing.Widget
       $(@node).css("background-color", @get('bgcolor'))
     else
       $(@node).css("background-color", "#444")
-    if @get('color')
-      $(@node).css("color", @get('color'))
-    else
-      $(@node).css("color", "#ffaa00")
+    # if @get('color')
+      # $(@node).css("color", @get('color'))
+    # else
+    $(@node).css("color", "#ffaa00")
       
   onData: (data) ->
