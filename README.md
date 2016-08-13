@@ -251,8 +251,11 @@ In order to use the weather widget you must configure the forecast.io component,
 
 The `data-id` of the Haweather widget must be set to `weather` or the widget will not work.
 
-The Haweather widget supports an optional `data-bgcolor` - the background color of the widget. This can be used to make the feed stand out from other tiles if required, the default is the standard grey like the rest of the widgets.
-## news
+The Hatemp widget supports an additional paramater  `data-unit` - this allows you to set the unit to whatever you want - Centigrade, Farenheight or even Kelvin if you prefer ;) You will need to explicitly include the degree symbol like this:
+```html
+data-unit="&deg;F"
+```
+If omitted, no units will be shown.## news
 Widget type ***News*** (contributed by [KRiS](https://community.home-assistant.io/users/kris/activity))  
 
 This is an RSS widget that can be used for displaying travel information, news etc. on the dashboard. The RSS feed will update every 6o minutes. To configure this, first it is necessary to add your desired feeds in `homeassistant/lib/ha_conf.rb` in the `$news_feeds` section. By default it comes with 2 sample feeds:
@@ -421,6 +424,11 @@ For some releases you may also need to rerun the bundle command:
 $ bundle
 ```
 # Release Notes
+***Version 1.6***
+
+- Merge Haalarm widgets contributed by [Soul](https://community.home-assistant.io/users/soul/activity)
+- Allow Haweather units to be specified as a parameter
+
 ***Version 1.5.1***
 
 - Fixed an issue with Float conversions on a weather field
