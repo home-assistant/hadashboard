@@ -2,6 +2,7 @@ require 'json'
 require 'net/http'
 
 $selectedDimmer = {}
+$alarm_control_panel_code = ""
 
 $ha_api = $ha_url + "/api/"
 
@@ -88,6 +89,51 @@ post '/homeassistant/lock' do
 	end
 	ha_api("services/lock/" + command, "post", {"entity_id" => entity_id})
 	return respondWithSuccess()
+end
+
+get '/homeassistant/alarm_control_panel_status' do
+    response = ha_api("states/alarm_control_panel." + params["widgetId"], "get")
+    return JSON.generate({"value" => response["state"]})
+end
+
+post '/homeassistant/alarm_control_panel_digit' do
+    digit = params["digit"]
+    alarm_entity = params["alarmEntity"]
+
+    if digit == "-"
+      # the 'clear' button has been pressed
+      # so blank the stored code and retrieve current status for display
+      $alarm_control_panel_code = ""
+      response = ha_api("states/alarm_control_panel." + alarm_entity, "get")
+      status_widget_value = response["state"]
+    else
+      # number has been pressed so add to code
+      $alarm_control_panel_code = $alarm_control_panel_code + digit
+      status_widget_value = $alarm_control_panel_code
+    end
+
+    # Send value back to the alarm status widget
+    send_event(alarm_entity, {
+      value: status_widget_value
+    })
+
+    return respondWithSuccess()
+end
+
+post '/homeassistant/alarm_control_panel_action' do
+    # action will be one of
+    #   disarm
+    #   arm_home
+    #   arm_away
+    #   trigger
+    if $alarm_control_panel_code == ""
+        ha_api("services/alarm_control_panel/alarm_" + params["action"], "post")
+    else
+        ha_api("services/alarm_control_panel/alarm_" + params["action"], "post", {"code" => $alarm_control_panel_code})
+    end
+    # now blank the code
+    $alarm_control_panel_code = ""
+    return respondWithSuccess()
 end
 
 get '/homeassistant/script' do
