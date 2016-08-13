@@ -12,11 +12,11 @@ The Dashboard is at its heart a [Dashing](http://dashing.io/) Dashboard. Dashing
 
 # Installation
 
-## 1. Clone the Repository
+## Clone the Repository
 Clone the **hadashboard** repository to the current local directory on your machine.
 
 ``` bash
-$ git clone https://github.com/acockburn/hadashboard.git
+$ git clone https://github.com/home-assistant/hadashboard.git
 ```
 
 Change your working directory to the repository root. Moving forward, we will be working from this directory.
@@ -213,15 +213,15 @@ Widget type ***Haweather***
 
 In order to use the weather widget you must configure the forecast.io component, and ensure that you configure at least the following monitored conditions in your Home Assistant sensor config:
 
-- weather_temperature
-- weather_humidity
-- weather_precip_probability
-- weather_precip_intensity
-- weather_wind_speed
-- weather_pressure
-- weather_wind_bearing
-- weather_apparent_temperature
-- weather_icon
+- temperature
+- humidity
+- precip_probability
+- precip_intensity
+- wind_speed
+- pressure
+- wind_bearing
+- apparent_temperature
+- icon
 
 The `data-id` of the Haweather widget must be set to `weather` or the widget will not work.
 
@@ -401,7 +401,7 @@ $ bundle
 
 *Changes in behavior*
 
-`Wind Chill` on the weather widget has been replaced by `Apparent Temperature` whcih is now passed straight through from the sensor value.
+`Wind Chill` on the weather widget has been replaced by `Apparent Temperature` which is now passed straight through from the sensor value.
 
 ***Version 1.5***
 

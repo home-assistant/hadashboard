@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.5"
+ruby "2.3.1"
 
 gem 'dashing'
 gem 'thor'
@@ -20,6 +20,6 @@ group :development do
 end
 
 # Production
-group :production do
-	gem 'dm-postgres-adapter'
-end
+#group :production do
+#	gem 'dm-postgres-adapter'
+#end
