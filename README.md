@@ -429,6 +429,10 @@ $ bundle
 - Merge Haalarm widgets contributed by [Soul](https://community.home-assistant.io/users/soul/activity)
 - Allow Haweather units to be specified as a parameter
 
+*Breaking Changes*
+
+It is now necessary to explicitly specify the units for the weather widget or no units will be shown.
+
 ***Version 1.5.1***
 
 - Fixed an issue with Float conversions on a weather field
