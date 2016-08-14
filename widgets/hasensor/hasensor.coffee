@@ -4,7 +4,7 @@ class Dashing.Hasensor extends Dashing.Widget
     @queryState()
 
   @accessor 'value',
-    get: -> if @_value then Math.round(@_value) else 0
+    get: -> @_value ? "?"
     set: (key, value) -> @_value = value
 
   queryState: ->

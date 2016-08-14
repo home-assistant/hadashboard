@@ -12,7 +12,13 @@ The Dashboard is at its heart a [Dashing](http://dashing.io/) Dashboard. Dashing
 
 # Installation
 
-## Clone the Repository
+Installation can be performed using Docker (Contributed by [marijngiesen](https://github.com/marijngiesen) or manually if Docker doesn't work for you. We also have a Raspberry PI version of Docker contributed by (snizzleorg)[https://community.home-assistant.io/users/snizzleorg/activity]
+
+## Using Docker (Non Raspian)
+
+Assuming you already have Docker installed, installation is fairly easy.
+
+### Clone the Repository
 Clone the **hadashboard** repository to the current local directory on your machine.
 
 ``` bash
@@ -25,7 +31,54 @@ Change your working directory to the repository root. Moving forward, we will be
 $ cd hadashboard
 ```
 
-## 2. Install Dashing and prereqs
+### Build the docker image
+
+```bash
+$ docker build -t hadashboard .
+```
+
+When the build completes, you can run the dashboard with:
+
+```bash
+$ docker run --name="hadashboard" -d -v <path_to_hadashboard>/dashboards:/app/dashboards -v <path_to_hadashboard>/lib/ha_conf.rb:/app/lib/ha_conf.rb -v <path_to_hadashboard>/hapush:/app/hapush --net=host hadashboard
+```
+
+This will use all of the same configuration files as specified below in the configuration sections, although you will need to make a few changes to match the docker's filesystem, detailed below.
+
+By default, the docker instance should pick up your timezone but if you want to explicitly set it you can add an environment variable for your specific zone as follows:
+
+```
+ -e "TZ=Europe/Amsterdam"
+ ```
+
+### Docker on Raspberry Pi
+
+Raspberry pi needs to use a different docker build file so the build command is slightly different:
+
+```bash
+$ docker build -f Docker-raspi/Dockerfile -t hadashboard .
+```
+
+Apart from that the other steps are identical.
+
+*Note - this is pretty slow even on a PI3, be prepared for it to take an hour or two to build all of the extensions and install everything*
+
+## Manual Installation
+
+### Clone the Repository
+Clone the **hadashboard** repository to the current local directory on your machine.
+
+``` bash
+$ git clone https://github.com/home-assistant/hadashboard.git
+```
+
+Change your working directory to the repository root. Moving forward, we will be working from this directory.
+
+``` bash
+$ cd hadashboard
+```
+
+### 2. Install Dashing and prereqs
 
 Essentially, you want to make sure that you have Ruby installed on your local machine. Then, install the Dashing gem:
 
@@ -58,18 +111,7 @@ Note: Prereqs will vary across different machines. So far users have reported re
 
 You will need to research what works on your particular architecture and also bear in mind that version numbers may change over time.
 
-Note: This is currently running on ruby version 2.1.5, and if you try to run with a different version you may get an error like:
-
-``
-Your Ruby version is 2.3.0, but your Gemfile specified 2.1.5
-``
-
-To fix this, you need to change the version of ruby specified in `Gemfile`, the directive is:
-```
-ruby "2.1.5"
-```
-
-In the example above you would need to change it to `2.3.0`. Note that this has not been tested by me and your mileage may vary if you use an arbitary version of ruby, however, the version above (`2.3.0`) has been reported to run correctly, and in most cases it should be fine.
+Note: This is currently running on various versions of Ruby and there are no strong dependencies however your milkeage may vary.
 
 Next, in the `./lib` directory, copy the ha_conf.rb.example file to ha_conf.rb and edit its settings to reflect your installation, pointing to the machine Home Assistant is running on and adding your api_key.
 
@@ -100,7 +142,7 @@ $ dashing start
 
 Point your browser to **http://localhost:3030** to access the hadashboard on your local machine.and you should see the supplied default dashboard.
 
-# Configuring The Dashboard
+# Configuring The Dashboard (All installations)
 Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
 
 Make a copy of dashboards/example.erb and call it 'main.erb', then edit this file to reference the items you want to display and control and to get the layout that you want. Leave the original example.erb intact and unchanged so that you don't run into problems when trying to update using the git commands mentioned later in "Updating the Dashboard".
@@ -334,7 +376,7 @@ You can also have multiple dashboards, by simply adding a new .erb file to the d
 
 For example, if you want to deploy multiple devices, you could have one dashboard per room and still only use one hadashboard app installation.
 
-# Installing hapush
+# Installing hapush (Not necessary if you are using Docker)
 
 When you have the dashboard correctly displaying and interacting with Home Assistant you are ready to install the final component - `hapush`. Without `hapush` the dashboard would not respond to events that happen outside of the hadashboard system. For instance, if someone uses the Home Assistant interface to turn on a light, or even another App or physical switch, there is no way for the Dashboard to reflect this change. This is where `hapush` comes in.
 
@@ -360,8 +402,9 @@ This can be fixed with:
 $ sudo pip3 install --upgrade requests
 ```
 
+# Configuring haPush (all installation methods)
 
-When you have all the prereqs in place, edit the hapush.cfg file to reflect your environment:
+When you have all the prereqs in place, copy the hapush.cfg.example file to hapush.cfg then edit it to reflect your environment:
 
 ```
 ha_url = "http://192.168.1.10:8123"
@@ -377,14 +420,17 @@ logfile = "/etc/hapush/hapush.log"
 - `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you cloned `hadashboard` to. 
 - `logfile` is the path to where you want `hapush` to keep its logs. When run from the command line this is not used - log messages come out on the terminal. When running as a daemon this is where the log information will go. In the example above I created a directory specifically for hapush to run from, although there is no reason you can't keep it in the `hapush` subdirectory of the cloned repository.
 
+# Running hapush
 
-You can then run hapush from the command line as follows:
+For a manual installation you can then run hapush from the command line as follows:
 
 ```bash
 $ ./hapush.py hapush.cfg
 ```
 
-If all is well, you should start to see `hapush` responding to events as they occur:
+For docker installs, hapush will be started automatically when you run the startup command.
+
+If all is well, you should start to see `hapush` responding to events as they occur. For a docker install you should see these messages in hapush/hapush.log
 
 ```
 2016-06-19 10:05:59,693 INFO Reading dashboard: /srv/hass/src/hadashboard/dashboards/main.erb
@@ -412,6 +458,10 @@ If all is well, you should start to see `hapush` responding to events as they oc
 # Starting At Reboot
 To run Dashing and `hapush` at reboot, I have provided sample init scripts in the `./init` directory. These have been tested on a Raspberry PI - your mileage may vary on other systems.
 
+Instructions for automaticaly starting a docker install can be found (here)[https://docs.docker.com/engine/admin/host_integration/].
+
+For docker you may also want to use docker-compose - there is a sample compose file in the `./init` directory.
+
 # Updating The Dashboard
 To update the dashboard after I have released new code, just run the following command to update your copy:
 
@@ -423,7 +473,17 @@ For some releases you may also need to rerun the bundle command:
 ``` bash
 $ bundle
 ```
+
+For docker users, you will also need to rerun the docker build process.
+
 # Release Notes
+
+***Version 1.7***
+
+- Add Docker support contributed by [marijngiesen](https://github.com/marijngiesen)
+- Add Raspberry PI Docker support contributed by (snizzleorg)[https://community.home-assistant.io/users/snizzleorg/activity]
+- Fix Hasensor to allow text fields fix suggested by (splnut)[https://community.home-assistant.io/users/splnut/activity]
+
 ***Version 1.6***
 
 - Merge Haalarm widgets contributed by [Soul](https://community.home-assistant.io/users/soul/activity)
