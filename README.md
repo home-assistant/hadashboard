@@ -333,8 +333,7 @@ This is an alternative to the the text based humidity widget above, it display t
 
 ## sensor (luminance)
 Widget type ***Halux***
-## sensor (motion)
-Widget type ***Hamotion***
+
 
 ## sensor (temperature)
 Widget type ***Hatemp***  
