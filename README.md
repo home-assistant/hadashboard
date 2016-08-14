@@ -481,8 +481,8 @@ For docker users, you will also need to rerun the docker build process.
 ***Version 1.7***
 
 - Add Docker support contributed by [marijngiesen](https://github.com/marijngiesen)
-- Add Raspberry PI Docker support contributed by (snizzleorg)[https://community.home-assistant.io/users/snizzleorg/activity]
-- Fix Hasensor to allow text fields fix suggested by (splnut)[https://community.home-assistant.io/users/splnut/activity]
+- Add Raspberry PI Docker support contributed by [snizzleorg](https://community.home-assistant.io/users/snizzleorg/activity)
+- Fix Hasensor to allow text fields fix suggested by [splnut](https://community.home-assistant.io/users/splnut/activity)
 
 ***Version 1.6***
 
