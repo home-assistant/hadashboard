@@ -479,6 +479,10 @@ For docker users, you will also need to rerun the docker build process.
 
 # Release Notes
 
+***Version 1.71***
+
+- Remove decimals introduced by Hasensor text fix
+
 ***Version 1.7***
 
 - Add Docker support contributed by [marijngiesen](https://github.com/marijngiesen)
