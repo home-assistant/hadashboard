@@ -110,7 +110,7 @@ Note: Prereqs will vary across different machines. So far users have reported re
 
 You will need to research what works on your particular architecture and also bear in mind that version numbers may change over time.
 
-Note: This is currently running on various versions of Ruby and there are no strong dependencies however your milkeage may vary.
+Note: This is currently running on various versions of Ruby and there are no strong dependencies however your mileage may vary.
 
 Next, in the `./lib` directory, copy the ha_conf.rb.example file to ha_conf.rb and edit its settings to reflect your installation, pointing to the machine Home Assistant is running on and adding your api_key.
 
