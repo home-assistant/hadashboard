@@ -417,7 +417,7 @@ logfile = "/etc/hapush/hapush.log"
 - `ha_url` is a reference to your home assistant installation and must include the correct port number and scheme (`http://` or `https://` as appropriate)
 - `ha_key` should be set to your key if you have one, otherwise it can be removed.
 - `dash_host` should be set to the IP address and port of the host you are running Dashing on (no http or https) - this should be the same machine as you are running `hapush` on.
-- `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you cloned `hadashboard` to. For docker installs this should be set to `/app/dashboards`
+- `dash_dir` is the path on the machine that stores your dashboards. This will be the subdirectory `dashboards` relative to the path you cloned `hadashboard` to. For Docker installs this should be set to `/app/dashboards`
 - `logfile` is the path to where you want `hapush` to keep its logs. When run from the command line this is not used - log messages come out on the terminal. When running as a daemon this is where the log information will go. In the example above I created a directory specifically for hapush to run from, although there is no reason you can't keep it in the `hapush` subdirectory of the cloned repository. For Docker installs this should be set to `/app/hapush/hapush.log`
 
 # Running hapush
