@@ -131,7 +131,7 @@ $news_feeds = {
 }
 ```
 
-You can leave these alone for now or if you prefer customize them as described in the New widget section below.
+You can leave these alone for now or if you prefer customize them as described in the News widget section below.
 
 When you are done, you can start a local webserver like this:
 
