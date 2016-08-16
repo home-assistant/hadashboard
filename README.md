@@ -403,7 +403,7 @@ This can be fixed with:
 $ sudo pip3 install --upgrade requests
 ```
 
-# Configuring haPush (all installation methods)
+# Configuring hapush (all installation methods)
 
 When you have all the prereqs in place, copy the hapush.cfg.example file to hapush.cfg then edit it to reflect your environment:
 
