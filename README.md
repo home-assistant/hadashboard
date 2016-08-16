@@ -105,7 +105,6 @@ Bundle will now install all the ruby prereqs for running dashing.
 Note: Prereqs will vary across different machines. So far users have reported requirements for some additional installs to allow the bundle to complete succesfully:
 
 - ruby-dev - `sudo apt-get install ruby-dev`
-- Postgress - `sudo apt-get install postgresql-9.4 postgresql-server-dev-9.4 libpq-dev sqlite libsqlite3-dev`
 - node-js - `sudo apt-get install nodejs`
 - execjs gem - `gem install execjs`
 
