@@ -478,6 +478,10 @@ For docker users, you will also need to rerun the docker build process.
 
 # Release Notes
 
+***Version 1.72***
+
+- Change weather sensor names for 0.27.0
+
 ***Version 1.71***
 
 - Remove decimals introduced by Hasensor text fix

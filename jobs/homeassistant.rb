@@ -251,32 +251,32 @@ end
 #Update the weather ever so often
 SCHEDULER.every '15m', :first_in => 0 do |job|
 	#Current weather
-	response = ha_api("states/sensor.weather_temperature", "get")
+	response = ha_api("states/sensor.forecastio_temperature", "get")
 	temp = response["state"]
 
-	response = ha_api("states/sensor.weather_humidity", "get")
+	response = ha_api("states/sensor.forecastio_humidity", "get")
 	humidity = response["state"]
 
-	response = ha_api("states/sensor.weather_precip_probability", "get")
+	response = ha_api("states/sensor.forecastio_precip_probability", "get")
 	precip = response["state"]
 
-	response = ha_api("states/sensor.weather_precip_intensity", "get")
+	response = ha_api("states/sensor.forecastio_precip_intensity", "get")
 	precipintensity = response["state"]
 
-	response = ha_api("states/sensor.weather_wind_speed", "get")
+	response = ha_api("states/sensor.forecastio_wind_speed", "get")
 	windspeed = response["state"]
 
-	response = ha_api("states/sensor.weather_pressure", "get")
+	response = ha_api("states/sensor.forecastio_pressure", "get")
 	pressure = response["state"]
 	
-	response = ha_api("states/sensor.weather_wind_bearing", "get")
+	response = ha_api("states/sensor.forecastio_wind_bearing", "get")
 	windbearing = response["state"]
 
 	
-	response = ha_api("states/sensor.weather_apparent_temperature", "get")
+	response = ha_api("states/sensor.forecastio_apparent_temperature", "get")
 	tempchill = response["state"]
 	
-	response = ha_api("states/sensor.weather_icon", "get")
+	response = ha_api("states/sensor.forecastio_icon", "get")
 	icon = response["state"].gsub(/-/, '_')
  
 	#Emit the event
