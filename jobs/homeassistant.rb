@@ -74,6 +74,24 @@ post '/homeassistant/garage' do
 	return respondWithSuccess()
 end
 
+get '/homeassistant/cover' do
+	response = ha_api("states/cover." + params["widgetId"], "get")
+	return JSON.generate({"state" => response["state"]})
+end
+
+post '/homeassistant/cover' do
+	entity_id = "cover." + params["widgetId"]
+	command = "close_cover"
+	if params["command"] == "open" 
+		command = "open_cover"
+	else
+		command = "close_cover"
+	end
+	ha_api("services/cover/" + command, "post", {"entity_id" => entity_id})
+	return respondWithSuccess()
+end
+
+
 get '/homeassistant/lock' do
 	response = ha_api("states/lock." + params["widgetId"], "get")
 	return JSON.generate({"state" => response["state"]})

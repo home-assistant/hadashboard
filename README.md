@@ -476,6 +476,10 @@ $ bundle
 
 For docker users, you will also need to rerun the docker build process.
 
+***Version 1.73***
+
+- Add cover widget
+
 # Release Notes
 
 ***Version 1.72***
