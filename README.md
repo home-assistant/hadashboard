@@ -476,13 +476,13 @@ $ bundle
 
 For docker users, you will also need to rerun the docker build process.
 
-***Version 1.73***
+***Version 1.7.3***
 
 - Add cover widget
 
 # Release Notes
 
-***Version 1.72***
+***Version 1.7.2***
 
 - Change weather sensor names for 0.27.0
 
