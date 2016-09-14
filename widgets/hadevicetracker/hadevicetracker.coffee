@@ -7,9 +7,12 @@ class Dashing.Hadevicetracker extends Dashing.ClickableWidget
     get: -> @_state ? 'off'
     set: (key, value) -> @_state = value
 
+  format_state: ->
+	
+
   @accessor 'icon',
     get: -> if @['icon'] then @['icon'] else
-      if @get('state') == 'home' then @get('iconon') else @get('iconoff')
+      if @get('state') == 'HOME' then @get('iconon') else @get('iconoff')
     set: Batman.Property.defaultAccessor.set
 
   @accessor 'iconon',
@@ -21,10 +24,10 @@ class Dashing.Hadevicetracker extends Dashing.ClickableWidget
     set: Batman.Property.defaultAccessor.set
 
   @accessor 'icon-style', ->
-    if @get('state') == 'home' then 'icon-present' else 'icon-absent'    
+    if @get('state') == 'HOME' then 'icon-present' else 'icon-absent'    
 
   toggleState: ->
-    newState = if @get('state') == 'home' then 'not_home' else 'home'
+    newState = if @get('state') == 'HOME' then 'AWAY' else 'HOME'
     @set 'state', newState
     return newState
 

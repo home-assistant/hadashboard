@@ -188,8 +188,8 @@ Widget type ***Halock***
 Widget type ***Hadevicetracker***
 ## light
 Widget type  ***Hadimmer***
-## garage
-Widget type ***Hagarage***
+## cover
+Widget type ***Hacover***
 ## input_boolean
 Widget type ***Hainputboolean***
 ## scene
@@ -479,6 +479,8 @@ For docker users, you will also need to rerun the docker build process.
 ***Version 1.7.3***
 
 - Add cover widget
+- Garage widget is deprecated in favor of the cover widget and will be removed at some point
+- Add location text to device_tracker widget
 
 # Release Notes
 

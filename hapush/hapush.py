@@ -95,7 +95,11 @@ def dashboard_update(widget_id, type, state):
       logger.info("group." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
     elif type == "device_tracker":
-      values = {"state": state['state']}
+      if state['state'] == "not_home":
+        nstate = "away"
+      else:
+        nstate = state['state']
+      values = {"state": nstate.upper()}
       logger.info("devicetracker." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
     elif type == "input_select":

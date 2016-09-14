@@ -215,7 +215,13 @@ end
 
 get '/homeassistant/devicetracker' do
 	response = ha_api("states/device_tracker." + params["widgetId"], "get")
-	return JSON.generate({"state" => response["state"]})
+	if response["state"] == "not_home"
+		state = "away"
+	else
+		state = response["state"]
+	end
+		
+	return JSON.generate({"state" => state.upcase})
 end
 
 post '/homeassistant/devicetracker' do
