@@ -188,8 +188,8 @@ Widget type ***Halock***
 Widget type ***Hadevicetracker***
 ## light
 Widget type  ***Hadimmer***
-## garage
-Widget type ***Hagarage***
+## cover
+Widget type ***Hacover***
 ## input_boolean
 Widget type ***Hainputboolean***
 ## scene

@@ -1,4 +1,4 @@
-class Dashing.Hagarage extends Dashing.ClickableWidget
+class Dashing.Hacover extends Dashing.ClickableWidget
   constructor: ->
     super
     @queryState()
@@ -24,7 +24,7 @@ class Dashing.Hagarage extends Dashing.ClickableWidget
     return newState
 
   queryState: ->
-    $.get '/homeassistant/garage',
+    $.get '/homeassistant/cover',
       widgetId: @get('id'),
       (data) =>
         json = JSON.parse data
@@ -32,7 +32,7 @@ class Dashing.Hagarage extends Dashing.ClickableWidget
 
   postState: ->
     newState = @toggleState()
-    $.post '/homeassistant/garage',
+    $.post '/homeassistant/cover',
       widgetId: @get('id'),
       command: newState,
       (data) =>
