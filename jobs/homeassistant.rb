@@ -226,7 +226,7 @@ end
 
 post '/homeassistant/devicetracker' do
 	entity_id = params["widgetId"]
-	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => params["command"]})
+	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => params["command"].downcase})
 	return respondWithSuccess()
 end
 
