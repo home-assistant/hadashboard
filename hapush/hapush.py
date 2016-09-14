@@ -124,9 +124,9 @@ def dashboard_update(widget_id, type, state):
       values = {"state": astate, "level": brightness}
       logger.info("switch." + widget_id + " -> state = " + astate + ", brightness = " + str(brightness))
       call_ha(widget_id, values)
-    elif type == "garage_door":
+    elif type == "cover":
       values = {"state": state['state']}
-      logger.info("garage_door." + widget_id + " -> " + state['state'])
+      logger.info("cover." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
     elif type == "lock":
       values = {"state": state['state']}
@@ -149,7 +149,7 @@ def dashboard_update(widget_id, type, state):
 def translate_view(view):
   views = {
         "Hadevicetracker": "device_tracker",
-        "Hagarage": "garage_door",
+        "Hacover": "cover",
         "Halock": "lock",
         "Haalarmstatus": "alarm_control_panel",
         "Hainputboolean": "input_boolean",
