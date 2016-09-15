@@ -226,7 +226,11 @@ end
 
 post '/homeassistant/devicetracker' do
 	entity_id = params["widgetId"]
-	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => params["command"].downcase})
+	state = params["command"].downcase
+	if state == "away"
+		state = "not_home"
+	end
+	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => state})
 	return respondWithSuccess()
 end
 

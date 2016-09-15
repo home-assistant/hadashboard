@@ -476,6 +476,10 @@ $ bundle
 
 For docker users, you will also need to rerun the docker build process.
 
+***Version 1.7.4***
+
+- Modify IFrame widget for @jbardi and @robpitera
+
 ***Version 1.7.3***
 
 - Add cover widget
