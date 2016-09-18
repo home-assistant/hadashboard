@@ -172,7 +172,8 @@ def translate_view(view):
         "Hamotion": "binary_sensor",
         "Hamode": "script",
         "Hatemp": "sensor",
-        "Hasensor": "sensor"
+        "Hasensor": "sensor",
+        "Hameter": "sensor"
       }
   if view in views:
     return views[view]
