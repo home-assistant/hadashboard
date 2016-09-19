@@ -17,6 +17,8 @@ None
 
 None
 
+------------------
+
 ***Version 1.7.4***
 
 - Modify IFrame widget for @jbardi and @robpitera
