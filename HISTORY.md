@@ -27,8 +27,6 @@ None
 - Garage widget is deprecated in favor of the cover widget and will be removed at some point
 - Add location text to device_tracker widget
 
-# Release Notes
-
 ***Version 1.7.2***
 
 - Change weather sensor names for 0.27.0
