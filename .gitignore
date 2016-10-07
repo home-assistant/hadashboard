@@ -8,4 +8,6 @@ dashboards/*
 history.yml
 persistent.db
 Gemfile.lock
-venv # Virtual environment folder for running hapush
+
+# Virtual environment folder for running hapush
+venv*
