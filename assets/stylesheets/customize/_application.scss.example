@@ -1,4 +1,4 @@
-// RENAME THIS FILE TO CUSTOMIZE.SCSS TO ACTIVATE IT
+// RENAME THIS FILE TO _application.scss TO ACTIVATE IT
 
 // Use this file to override CSS for anything you want. Edit here rather than
 // individual widget SCSS files so your changes don't get overridden when
