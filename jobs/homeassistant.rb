@@ -74,6 +74,24 @@ post '/homeassistant/garage' do
 	return respondWithSuccess()
 end
 
+get '/homeassistant/cover' do
+	response = ha_api("states/cover." + params["widgetId"], "get")
+	return JSON.generate({"state" => response["state"]})
+end
+
+post '/homeassistant/cover' do
+	entity_id = "cover." + params["widgetId"]
+	command = "close_cover"
+	if params["command"] == "open" 
+		command = "open_cover"
+	else
+		command = "close_cover"
+	end
+	ha_api("services/cover/" + command, "post", {"entity_id" => entity_id})
+	return respondWithSuccess()
+end
+
+
 get '/homeassistant/lock' do
 	response = ha_api("states/lock." + params["widgetId"], "get")
 	return JSON.generate({"state" => response["state"]})
@@ -197,12 +215,22 @@ end
 
 get '/homeassistant/devicetracker' do
 	response = ha_api("states/device_tracker." + params["widgetId"], "get")
-	return JSON.generate({"state" => response["state"]})
+	if response["state"] == "not_home"
+		state = "away"
+	else
+		state = response["state"]
+	end
+		
+	return JSON.generate({"state" => state.upcase})
 end
 
 post '/homeassistant/devicetracker' do
 	entity_id = params["widgetId"]
-	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => params["command"]})
+	state = params["command"].downcase
+	if state == "away"
+		state = "not_home"
+	end
+	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => state})
 	return respondWithSuccess()
 end
 

@@ -1,38 +1,30 @@
-class Dashing.Hadevicetracker extends Dashing.ClickableWidget
+class Dashing.Hacover extends Dashing.ClickableWidget
   constructor: ->
     super
     @queryState()
 
   @accessor 'state',
-    get: -> @_state ? 'off'
+    get: -> @_state ? 'open'
     set: (key, value) -> @_state = value
 
-  format_state: ->
-	
-
   @accessor 'icon',
-    get: -> if @['icon'] then @['icon'] else
-      if @get('state') == 'HOME' then @get('iconon') else @get('iconoff')
-    set: Batman.Property.defaultAccessor.set
-
-  @accessor 'iconon',
-    get: -> @['iconon'] ? 'user'
-    set: Batman.Property.defaultAccessor.set
-
-  @accessor 'iconoff',
-    get: -> @['iconoff'] ? 'times'
+    get: -> 'car'
     set: Batman.Property.defaultAccessor.set
 
   @accessor 'icon-style', ->
-    if @get('state') == 'HOME' then 'icon-present' else 'icon-absent'    
+    if @get('state') == 'open' then icon = 'icon-open'
+    if @get('state') == 'closed' then icon = 'icon-closed'
+    if @get('state') == 'opening' then icon = 'icon-opening'
+    if @get('state') == 'closing' then icon = 'icon-closing'
+    return icon
 
   toggleState: ->
-    newState = if @get('state') == 'HOME' then 'AWAY' else 'HOME'
+    newState = if @get('state') == 'open' then 'closed' else 'open'
     @set 'state', newState
     return newState
 
   queryState: ->
-    $.get '/homeassistant/devicetracker',
+    $.get '/homeassistant/cover',
       widgetId: @get('id'),
       (data) =>
         json = JSON.parse data
@@ -40,7 +32,7 @@ class Dashing.Hadevicetracker extends Dashing.ClickableWidget
 
   postState: ->
     newState = @toggleState()
-    $.post '/homeassistant/devicetracker',
+    $.post '/homeassistant/cover',
       widgetId: @get('id'),
       command: newState,
       (data) =>
@@ -54,5 +46,8 @@ class Dashing.Hadevicetracker extends Dashing.ClickableWidget
     else
       $(@node).css("background-color", "#444")
 
+  onData: (data) ->
+
   onClick: (event) ->
     @postState()
+

@@ -188,8 +188,8 @@ Widget type ***Halock***
 Widget type ***Hadevicetracker***
 ## light
 Widget type  ***Hadimmer***
-## garage
-Widget type ***Hagarage***
+## cover
+Widget type ***Hacover***
 ## input_boolean
 Widget type ***Hainputboolean***
 ## scene
@@ -486,6 +486,7 @@ $ bundle
 
 For docker users, you will also need to rerun the docker build process.
 
+<<<<<<< HEAD
 # Release Notes
 
 ***Version 1.72***
