@@ -24,7 +24,7 @@ class Dashing.Habinary extends Dashing.Widget
     if @get('state') == 'on' then 'binary-icon-on' else 'binary-icon-off'
 
   queryState: ->
-    $.get '/homeassistant/motion',
+    $.get '/homeassistant/binarysensor',
       widgetId: @get('id')
       (data) =>
         json = JSON.parse data

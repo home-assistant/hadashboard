@@ -65,7 +65,7 @@ end
 post '/homeassistant/garage' do
 	entity_id = "garage_door." + params["widgetId"]
 	command = "close"
-	if params["command"] == "open" 
+	if params["command"] == "open"
 		command = "open"
 	else
 		command = "close"
@@ -82,7 +82,7 @@ end
 post '/homeassistant/cover' do
 	entity_id = "cover." + params["widgetId"]
 	command = "close_cover"
-	if params["command"] == "open" 
+	if params["command"] == "open"
 		command = "open_cover"
 	else
 		command = "close_cover"
@@ -100,7 +100,7 @@ end
 post '/homeassistant/lock' do
 	entity_id = "lock." + params["widgetId"]
 	command = "lock"
-	if params["command"] == "unlock" 
+	if params["command"] == "unlock"
 		command = "unlock"
 	else
 		command = "lock"
@@ -220,7 +220,7 @@ get '/homeassistant/devicetracker' do
 	else
 		state = response["state"]
 	end
-		
+
 	return JSON.generate({"state" => state.upcase})
 end
 
@@ -265,7 +265,7 @@ get '/homeassistant/lux' do
 	return JSON.generate({"value" => response["state"]})
 end
 
-get '/homeassistant/motion' do
+get '/homeassistant/binarysensor' do
 	response = ha_api("states/binary_sensor." + params["widgetId"], "get")
 	return JSON.generate({"state" => response["state"]})
 end
@@ -296,17 +296,17 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
 
 	response = ha_api("states/sensor.forecastio_pressure", "get")
 	pressure = response["state"]
-	
+
 	response = ha_api("states/sensor.forecastio_wind_bearing", "get")
 	windbearing = response["state"]
 
-	
+
 	response = ha_api("states/sensor.forecastio_apparent_temperature", "get")
 	tempchill = response["state"]
-	
+
 	response = ha_api("states/sensor.forecastio_icon", "get")
 	icon = response["state"].gsub(/-/, '_')
- 
+
 	#Emit the event
 	send_event('weather', {
 		temp: temp,
