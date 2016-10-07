@@ -486,7 +486,6 @@ $ bundle
 
 For docker users, you will also need to rerun the docker build process.
 
-<<<<<<< HEAD
 # Release Notes
 
 ***Version 1.72***
