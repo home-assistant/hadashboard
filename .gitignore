@@ -7,7 +7,7 @@ dashboards/*
 # Don't include custom CSS
 assets/stylesheets/customize/*
 # But include the example
-!assets/stylesheets/customize.scss.example
+!assets/stylesheets/customize/customize.scss.example
 
 # Ignore runtime and environment stuff
 history.yml
