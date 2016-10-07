@@ -21,7 +21,7 @@ class Dashing.Habinary extends Dashing.Widget
     set: Batman.Property.defaultAccessor.set
 
   @accessor 'icon-style', ->
-    if @get('state') == 'on' then 'binary-icon-on' else 'binary-icon-off'
+    if @get('state') == 'on' then 'icon-active' else 'icon-inactive'
 
   queryState: ->
     $.get '/homeassistant/binarysensor',
@@ -33,5 +33,3 @@ class Dashing.Habinary extends Dashing.Widget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")

@@ -1,17 +1,9 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-stmode styles
 // ----------------------------------------------------------------------------
 .widget-hascene {
-
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
-  i {
-  	font-style: normal;
-  }
 
   .container {
   	position: relative;
@@ -27,11 +19,11 @@
   }
 
   .icon-inactive {
-    color: #888888;
+    color: $color-inactive;
   }
 
   .icon-active {
-    color: #aaff00;
+    color: $color-active;
   }
 
 }

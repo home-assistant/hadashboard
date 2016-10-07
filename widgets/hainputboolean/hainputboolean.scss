@@ -1,24 +1,21 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget styles
 // ----------------------------------------------------------------------------
 .widget-hainputboolean {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
 
   .switch-icon-off .switch-icon-on {
     font-size: 150%;
   }
 
   .switch-icon-off {
-    color: #888888;
+    color: $color-inactive;
   }
 
   .switch-icon-on {
-  	color: #aaff00;
+  	color: $color-active;
   }
 
 }

@@ -3,16 +3,6 @@
 // ----------------------------------------------------------------------------
 .widget-hamode {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
-  i {
-  	font-style: normal;
-  }
-
   .container {
   	position: relative;
   	height: 75px;
@@ -28,14 +18,6 @@
 
   .timer {
   	z-index: 1;
-  }
-
-  .icon-inactive {
-    color: #888888;
-  }
-
-  .icon-active {
-    color: #aaff00;
   }
 
 }

@@ -5,16 +5,9 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color: #222;
-$text-color: #fff;
 
-$background-warning-color-1: #e82711;
-$background-warning-color-2: #9b2d23;
-$text-warning-color: #fff;
-
-$background-danger-color-1: #eeae32;
-$background-danger-color-2: #ff9618;
-$text-danger-color: #fff;
+//Defaults are all in _variables.scss
+@import "variables";
 
 @-webkit-keyframes status-warning-background {
   0%   { background-color: $background-warning-color-1; }
@@ -149,7 +142,19 @@ h3 {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
-  background-color: #333;
+  background-color: $gray-dark;
+
+  .title {
+    color: #fff;
+  }
+
+  .icon-inactive {
+    color: $color-inactive;
+  }
+
+  .icon-active {
+    color: $color-active;
+  }
 }
 
 .widget.status-warning {
@@ -256,4 +261,3 @@ h3 {
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
-

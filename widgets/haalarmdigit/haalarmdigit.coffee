@@ -3,7 +3,7 @@ class Dashing.Haalarmdigit extends Dashing.ClickableWidget
     super
 
   state = 'off'
-    
+
   @accessor 'icon',
     get: -> @['icon'] ? 'stop'
     set: Batman.Property.defaultAccessor.set
@@ -19,14 +19,12 @@ class Dashing.Haalarmdigit extends Dashing.ClickableWidget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
 
   turnOff: =>
     state = 'off'
     @set 'icon-style', 'icon-inactive'
     @set 'title-style', 'title-inactive'
-  
+
   postScene: ->
     $.post '/homeassistant/alarm_control_panel_digit',
       digit: @get('digit'),
@@ -43,4 +41,3 @@ class Dashing.Haalarmdigit extends Dashing.ClickableWidget
     @set 'title-style', 'title-active'
 
     @_timeout = setTimeout(@turnOff, @['ontime'] ? 700)
-
