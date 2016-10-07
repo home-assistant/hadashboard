@@ -1,7 +1,0 @@
-// RENAME THIS FILE TO _colors.scss TO ACTIVATE IT
-
-// Use this file to set your own custom colors. You can override variables from
-// the parent directory's _variables.scss, or make your own variables here
-// and use them in _application.scss.
-
-$red: #ff0000;
