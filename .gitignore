@@ -5,7 +5,9 @@ dashboards/*
 !dashboards/layout.erb
 
 # Don't include custom CSS
-assets/stylesheets/customize.scss
+assets/stylesheets/customize/*
+# But include the example
+!assets/stylesheets/customize.scss.example
 
 # Ignore runtime and environment stuff
 history.yml

@@ -353,6 +353,9 @@ data-unit="&deg;F"
 ```
 If omitted, no units will be shown.
 
+# Customizing CSS styles
+If you want to customize the styles of your dashboard and widgets, the easiest way is to use the customize.scss file. 
+
 # Changes and Restarting
 
 When you make changes to a dashboard, Dashing and `hapush` will both automatically reload and apply the changes without a need to restart.
