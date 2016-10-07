@@ -354,7 +354,11 @@ data-unit="&deg;F"
 If omitted, no units will be shown.
 
 # Customizing CSS styles
-If you want to customize the styles of your dashboard and widgets, the easiest way is to use the customize.scss file. 
+If you want to customize the styles of your dashboard and widgets, the easiest way is to use the files in the _assets/stylesheets/customize_ directory. After renaming the example files, you can customize freely here without worrying about your changes getting overwritten if you pull down an update.
+
+There are example of two files provided in _assets/stylesheets/customize_:
+* **_variables.scss**: Use this to override CSS variables set in the parent-directory's `_variables.scss` file. The values in this file are referenced by widgets, so you can use overrides here to globally change colors.
+* **_application.scss**: Put style declarations here to override application-wide and widget-specific styles.
 
 # Changes and Restarting
 
