@@ -142,7 +142,7 @@ $ dashing start
 Point your browser to **http://localhost:3030** to access the hadashboard on your local machine.and you should see the supplied default dashboard.
 
 # Configuring The Dashboard (All installations)
-Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
+Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets.
 
 Make a copy of dashboards/example.erb and call it 'main.erb', then edit this file to reference the items you want to display and control and to get the layout that you want. Leave the original example.erb intact and unchanged so that you don't run into problems when trying to update using the git commands mentioned later in "Updating the Dashboard".
 
@@ -157,15 +157,15 @@ The basic anatomy of a widget is this:
 - **data-id**: The homeassitant entity id without the entity type (e.g. `light.office` becomes `office`).
 - **data-view**: The type of widget to be used (Haswitch, Hadimmer, Hatemp etc.)
 - **data-icon**: The icon displayed on the tile. See http://fontawesome.io for an icon cheatsheet.
-- **data-title**: The title to be displayed on the tile. 
+- **data-title**: The title to be displayed on the tile.
 - ***data-bgcolor*** (optional) - the background color of the widget.
 
 Note that although it is legal in XML terms to split the inner `<div>` like this:
 
 ``` html
  	<li data-row="" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="office" 
-            data-view="Hadimmer" 
+      <div data-id="office"
+            data-view="Hadimmer"
             data-title="Office Lamp">
       </div>
     </li>
@@ -199,7 +199,7 @@ Widget type ***Hascene***
 
 ## script
 
-Widget type ***Hascript*** 
+Widget type ***Hascript***
 
 **data-ontime** (optional): The amount of time the scene icon lights up when pressed, in milliseconds, default 1000.
 
@@ -214,7 +214,7 @@ A `Hamode` widget using this feature will look like this:
       <div data-id="day" data-view="Hamode" data-title="Good Day" data-icon="sun-o" data-changemode="Day" data-input="house_mode"></div>
     </li>
 ```
-**data-changemode**: The value of the `input_select` for which this script button will light up 
+**data-changemode**: The value of the `input_select` for which this script button will light up
 
 **data-input**: The `input_select` entity to use (minus the leading entity type)
 
@@ -242,6 +242,16 @@ The Hameter widget supports an additional paramater  `data-unit` - this allows y
 data-unit="&deg;F"
 ```
 If omitted, no units will be shown.
+
+## binary_sensor
+Widget type ***Habinary***
+
+An icon-based option for generic binary sensors. Useful for things like door contact sensors. In addition to the standard widget parameters, Habinary supports two additional parameters:
+
+`data-iconon` - the icon to display when the sensor state is "on"
+`data-iconoff` - the icon to display when the sensor state if "off"
+
+If no icons are specified, the widget defaults to a flat gray line for "off" and a green bullseye for "on".
 
 ## group
 Widget type ***Hagroup***
@@ -369,7 +379,7 @@ The divisions are implicitly numbered from 1 so it is a good idea to comment the
     <div data-id="cpage1" data-view="ChangePage" data-icon="cogs" data-title="Upstairs" data-page="3" data-stagger="false" data-fasttransition="true" data-event-click="onClick"></div>
 </li>
 ```
-- ***data-page*** : The name of the page to switch to 
+- ***data-page*** : The name of the page to switch to
 
 # Multiple Dashboards
 You can also have multiple dashboards, by simply adding a new .erb file to the dashboards directory and navigating to the dashboards via `http://<IP address>:3030/dashboard-file-name-without-extension`
@@ -560,7 +570,7 @@ Previously temperature units defaulted to Fahrenheit - now there is no default, 
 
 - Fix docs and excample cfg to remove scheme from `hapush` dash_host config variable
 
-***Version 1.1*** 
+***Version 1.1***
 
 - Expand instructions
 - Allow no api_key

@@ -1,5 +1,5 @@
 # Ignore any dashboards you create
-dashboards/*.erb
+dashboards/*
 # But don't ignore these
 !dashboards/example.erb
 !dashboards/layout.erb

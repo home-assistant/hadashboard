@@ -32,7 +32,7 @@ monitored_files = {}
 
 def roundup(x):
     return int(math.ceil(x / 10.0)) * 10
-  
+
 def call_ha(widget_id, values):
   global logger
   url = "http://" + dash_host + "/widgets/" + widget_id
@@ -46,7 +46,7 @@ def call_ha(widget_id, values):
 def process_message(msg):
   global logger
   global widgets
-  
+
   if msg.data == "ping":
     return
 
@@ -63,9 +63,9 @@ def process_message(msg):
         parts = entity_id.split(".")
         type = parts[0]
         widget_id = parts[1]
-        
+
         # Check to see if we have the widget registered and also where to send the notification
-        
+
         if type in widgets and widget_id in widgets[type]:
           for widget in widgets[type][widget_id]:
             send_type = widgets[type][widget_id][widget]
@@ -84,7 +84,7 @@ def process_message(msg):
     logger.warn('-'*60)
 
 def dashboard_update(widget_id, type, state):
-  
+
   try:
     if type == "switch":
       values = {"state": state['state']}
@@ -161,6 +161,7 @@ def translate_view(view):
         "Hahumidity": "sensor",
         "Hainputselect": "input_select",
         "Hamotion": "binary_sensor",
+        "Habinary": "binary_sensor",
         "Hamode": "script",
         "Hatemp": "sensor",
         "Hasensor": "sensor"
@@ -169,8 +170,8 @@ def translate_view(view):
     return views[view]
   else:
     return "none"
-  
-    
+
+
 def readDash(file):
   global widgets
 
@@ -180,14 +181,14 @@ def readDash(file):
   id = re.compile('data-id\s*?=\s*?"(.+?)"')
   input = re.compile('data-input\s*?=\s*?"(.+?)"')
   view = re.compile('data-view\s*?=\s*?"(.+?)"')
-  
+
   with open(file) as f:
     for line in f:
-      
+
       data_id = ""
       data_input = ""
       data_view = ""
-      
+
       # Find a <div>
       m1 = div.search(line)
       if m1:
@@ -205,7 +206,7 @@ def readDash(file):
           if m4:
             data_input = m4.group(1)
 
-      if data_id: 
+      if data_id:
         if not data_view in widgets:
           widgets[data_view] = {}
         if (data_input):
@@ -220,11 +221,11 @@ def readDash(file):
           if not data_id in widgets[data_view]:
             widgets[data_view][data_id] = {}
           widgets[data_view][data_id][data_id] = data_view
-      
+
 def readDashboards():
   global monitored_files
   global dash_dir
-  
+
   found_files = glob.glob(os.path.join(dash_dir, '*.erb'))
   for file in found_files:
     if file == "{0}/layout.erb".format(dash_dir):
@@ -244,7 +245,7 @@ def run():
   global ha_key
   global dash_host
   global logger
-  
+
   while True:
     try:
       headers = {'Content-Type' : 'application/json'}
@@ -269,9 +270,9 @@ def main():
   global dash_host
   global dash_dir
   global logger
-  
+
   # Get command line args
-  
+
   parser = argparse.ArgumentParser()
 
   parser.add_argument("config", help="full path to config file", type=str)
@@ -280,7 +281,7 @@ def main():
   parser.add_argument("-D", "--debug", help="debug level", default = "INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"])
   args = parser.parse_args()
   config_file = args.config
-  
+
   isdaemon = args.daemon
 
   # Read Config File
@@ -293,9 +294,9 @@ def main():
   dash_host = config['dash_host']
   dash_dir = config['dash_dir']
   logfile = config['logfile']
-  
+
   # Setup Logging
-  
+
   logger = logging.getLogger(__name__)
   numeric_level = getattr(logging, args.debug, None)
   logger.setLevel(numeric_level)
@@ -303,7 +304,7 @@ def main():
   formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 
   # Send to file if we are daemonizing, else send to console
-  
+
   if isdaemon:
     fh = RotatingFileHandler(logfile, maxBytes=1000000, backupCount=3)
     fh.setLevel(numeric_level)
@@ -316,22 +317,22 @@ def main():
     logger.addHandler(ch)
 
   # Read dashboards
-  
+
   readDashboards()
-  
+
   # Start main loop
 
   if isdaemon:
     keep_fds = [fh.stream.fileno()]
     pid = args.pidfile
-    daemon = Daemonize(app="hapush", pid=pid, action=run, keep_fds=keep_fds) 
+    daemon = Daemonize(app="hapush", pid=pid, action=run, keep_fds=keep_fds)
     daemon.start()
     while True:
       time.sleep(1)
   else:
     run()
-    
 
-  
+
+
 if __name__ == "__main__":
     main()
