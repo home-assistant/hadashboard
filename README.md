@@ -248,8 +248,8 @@ Widget type ***Habinary***
 
 An icon-based option for generic binary sensors. Useful for things like door contact sensors. In addition to the standard widget parameters, Habinary supports two additional parameters:
 
-`data-iconon` - the icon to display when the sensor state is "on"
-`data-iconoff` - the icon to display when the sensor state if "off"
+- **data-iconon**: the icon to display when the sensor state is "on"
+- **data-iconoff**: the icon to display when the sensor state if "off"
 
 If no icons are specified, the widget defaults to a flat gray line for "off" and a green bullseye for "on".
 
