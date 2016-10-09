@@ -8,6 +8,9 @@ dashboards/*
 history.yml
 persistent.db
 Gemfile.lock
+dashing.pid
+.bundle
+log/thin.log
 
 # Virtual environment folder for running hapush
 venv*

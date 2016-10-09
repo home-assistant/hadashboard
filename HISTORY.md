@@ -2,6 +2,21 @@
 History
 =======
 
+1.8 (2016-10-09)
+------------------
+
+**Features**
+
+- Add support for binary sensor contributed by [rogersmj](https://community.home-assistant.io/users/rogersmj/activity)
+
+**Fixes**
+
+None
+
+**Breaking Changes**
+
+None
+
 1.7.5 (2016-18-16)
 ------------------
 
