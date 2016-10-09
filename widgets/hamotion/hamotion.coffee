@@ -15,7 +15,7 @@ class Dashing.Hamotion extends Dashing.Widget
     if @get('state') == 'on' then 'icon-active' else 'icon-inactive'
 
   queryState: ->
-    $.get '/homeassistant/motion',
+    $.get '/homeassistant/binarysensor',
       widgetId: @get('id'),
       (data) =>
         json = JSON.parse data
