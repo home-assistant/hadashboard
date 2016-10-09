@@ -2,6 +2,22 @@
 History
 =======
 
+1.8.1 (2016-10-09)
+------------------
+
+**Features**
+
+- Updated weather to use Dark Sky sensors
+
+**Fixes**
+
+None
+
+**Breaking Changes**
+
+- Weather will not work unless Home Assistant is updated to use the Dark Sky component
+
+
 1.8 (2016-10-09)
 ------------------
 
