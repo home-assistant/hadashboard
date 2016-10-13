@@ -284,11 +284,11 @@ The Haalarmaction widget creates the arm/disarm/trigger buttons. Bear in mind th
 
 data-action must contain one of the following: arm_home/arm_away/trigger/disarm.
 
-# weather (requires forecast.io)
+# weather (requires dark sky)
 
 Widget type ***Haweather***
 
-In order to use the weather widget you must configure the forecast.io component, and ensure that you configure at least the following monitored conditions in your Home Assistant sensor config:
+In order to use the weather widget you must configure the dark sky component, and ensure that you configure at least the following monitored conditions in your Home Assistant sensor config:
 
 - temperature
 - humidity
