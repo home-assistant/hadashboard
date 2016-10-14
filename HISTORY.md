@@ -2,6 +2,37 @@
 History
 =======
 
+1.8.1 (2016-10-09)
+------------------
+
+**Features**
+
+- Updated weather to use Dark Sky sensors
+
+**Fixes**
+
+None
+
+**Breaking Changes**
+
+- Weather will not work unless Home Assistant is updated to use the Dark Sky component
+
+
+1.8 (2016-10-09)
+------------------
+
+**Features**
+
+- Add support for binary sensor contributed by [rogersmj](https://community.home-assistant.io/users/rogersmj/activity)
+
+**Fixes**
+
+None
+
+**Breaking Changes**
+
+None
+
 1.7.5 (2016-18-16)
 ------------------
 
