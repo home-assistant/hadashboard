@@ -6,8 +6,12 @@
 // Sass declarations
 // ----------------------------------------------------------------------------
 
-//Defaults are all in _variables.scss
+//Default colors are all in _variables.scss
 @import "variables";
+// ----------------------------------------------------------------------------
+// Custom colors - if you want to override the default colors,
+// go to _variables.scss and follow the instructions there
+// ----------------------------------------------------------------------------
 
 @-webkit-keyframes status-warning-background {
   0%   { background-color: $background-warning-color-1; }
@@ -254,12 +258,17 @@ h3 {
   padding-top: 5px;
 }
 
-//Include the user's style customizations
-@import "customize/application";
-
 // ----------------------------------------------------------------------------
 // Clearfix
 // ----------------------------------------------------------------------------
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+
+// ----------------------------------------------------------------------------
+// Custom styles instructions
+//    1. Create a file named "_application_custom.scss" (in this folder)
+//    2. Uncomment the below @import line
+// ----------------------------------------------------------------------------
+// @import "application_custom";
