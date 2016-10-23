@@ -15,7 +15,7 @@ None
 
 **Breaking Changes**
 
-- Weather will not work unless Home Assistant is updated to use the Dark Sky component
+None
 
 1.8.1 (2016-10-09)
 ------------------
