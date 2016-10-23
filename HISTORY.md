@@ -2,6 +2,21 @@
 History
 =======
 
+1.9.0 (2016-10-23)
+
+**Features**
+
+- New CSS structure that allows easy dashboard wide color customizations contributed by [rogersmj](https://community.home-assistant.io/users/rogersmj/activity)
+- Added a favicon
+
+**Fixes**
+
+None
+
+**Breaking Changes**
+
+- Weather will not work unless Home Assistant is updated to use the Dark Sky component
+
 1.8.1 (2016-10-09)
 ------------------
 

@@ -359,7 +359,7 @@ If you want to customize the styles of your dashboard and widgets, there are two
 1. You can edit the application.scss file (and the individual widget .scss files) directly (not recommended; if you pull down updates from the master repository, your changes might conflict/be overwritten)
 1. __Create override files (recommended)__
     1. Create a couple of additional files in the _assets/stylesheets_ directory: `_application_custom.scss` and `_variables_custom.scss`.
-    1. Open `_application.scss` and go to the bottom of the file. Uncomment the @import line.
+    1. Open `application.scss` and go to the bottom of the file. Uncomment the @import line.
     1. Open `_variables.scss` and go to the bottom of the file. Uncomment the @import line.
     1. Write your own SASS styles in `_application_custom.scss` (for general style customization) and `_variables_custom.scss` (for colors). You can customize those files without worrying about your changes getting overwritten if you pull down an update. The most you may have to do, if you update, will be to uncomment the @import lines again from steps 2 and 3.
 
