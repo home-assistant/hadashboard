@@ -1,22 +1,18 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-halux styles
 // ----------------------------------------------------------------------------
 .widget-halux {
 
-  background-color: #444 !important;
-
-  .title {
-    color: #fff;
-  }
-
   .value {
-  	color: #00aaff;
+  	color: $blue;
     display: inline-block;
     vertical-align: middle;
   }
 
   .unit {
-    color: #00aaff;
+    color: $blue;
     font-size: 225%;
     font-weight: 400;
     display: inline-block;

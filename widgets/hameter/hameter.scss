@@ -1,7 +1,4 @@
-// ----------------------------------------------------------------------------
-// Sass declarations
-// ----------------------------------------------------------------------------
-
+@import "variables";
 $moreinfo-color:    rgba(255, 255, 255, 0.3);
 
 // ----------------------------------------------------------------------------
@@ -9,12 +6,11 @@ $moreinfo-color:    rgba(255, 255, 255, 0.3);
 // ----------------------------------------------------------------------------
 .widget-hameter {
 
-  background-color: #444;
   position: relative;
 
   input.meter {
-    background-color: #666;
-    color: #00aaff;
+    background-color: $gray-medium;
+    color: $blue;
     margin-top: 20px !important;
     font-size: 22px !important;
   }

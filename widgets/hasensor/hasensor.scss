@@ -1,22 +1,18 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-hasensor styles
 // ----------------------------------------------------------------------------
 .widget-hasensor {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
   .value {
-  	color: #00aaff;
+  	color: $blue;
     display: inline-block;
     vertical-align: middle;
   }
 
   .unit {
-    color: #00aaff;
+    color: $blue;
     font-size: 225%;
     font-weight: 400;
     display: inline-block;

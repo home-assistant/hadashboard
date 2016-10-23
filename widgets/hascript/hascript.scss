@@ -3,16 +3,6 @@
 // ----------------------------------------------------------------------------
 .widget-hascript {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
-  i {
-  	font-style: normal;
-  }
-
   .container {
   	position: relative;
   	height: 75px;
@@ -24,14 +14,6 @@
   	left: 0;
   	width: 100%;
   	height: 100%;
-  }
-
-  .icon-inactive {
-    color: #888888;
-  }
-
-  .icon-active {
-    color: #aaff00;
   }
 
 }

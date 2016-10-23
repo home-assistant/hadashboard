@@ -4,6 +4,10 @@ dashboards/*
 !dashboards/example.erb
 !dashboards/layout.erb
 
+# Don't include custom CSS
+assets/stylesheets/_application_custom.scss
+assets/stylesheets/_variables_custom.scss
+
 # Ignore runtime and environment stuff
 history.yml
 persistent.db

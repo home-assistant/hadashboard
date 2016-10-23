@@ -1,26 +1,22 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-hacover styles
 // ----------------------------------------------------------------------------
 .widget-hacover {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
   .icon-open {
-  	color: #ff00aa;
+  	color: $red;
   }
   .icon-opening {
-  	color: #ffff00;
+  	color: $yellow;
   }
   .icon-closing {
-  	color: #ffff00;
+  	color: $yellow;
   }
 
   .icon-closed {
-  	color: #888888;
+  	color: $color-inactive;
   }
 
 }

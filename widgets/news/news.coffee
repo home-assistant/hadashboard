@@ -7,8 +7,6 @@ class Dashing.News extends Dashing.Widget
     @startCarousel()
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
 
   onData: (data) ->
     @currentIndex = 0
