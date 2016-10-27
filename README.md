@@ -12,7 +12,7 @@ The Dashboard is at its heart a [Dashing](http://dashing.io/) Dashboard. Dashing
 
 # Installation
 
-Installation can be performed using Docker (Contributed by [marijngiesen](https://github.com/marijngiesen) or manually if Docker doesn't work for you. We also have a Raspberry PI version of Docker contributed by (snizzleorg)[https://community.home-assistant.io/users/snizzleorg/activity]
+Installation can be performed using Docker (Contributed by [marijngiesen](https://github.com/marijngiesen)) or manually if Docker doesn't work for you. We also have a Raspberry PI version of Docker contributed by [snizzleorg](https://community.home-assistant.io/users/snizzleorg/activity)
 
 ## Using Docker (Non Raspian)
 
