@@ -5,7 +5,7 @@ class Dashing.Haalarmstatus extends Dashing.Widget
 
   @accessor 'value',
     get: -> @_value ? 'UNKNOWN'
-    set: (key, value) -> 
+    set: (key, value) ->
       if value == "disarmed"
         @_value = "DISARMED"
       else if value == "pending"
@@ -29,8 +29,5 @@ class Dashing.Haalarmstatus extends Dashing.Widget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
 
   onData: (data) ->
-

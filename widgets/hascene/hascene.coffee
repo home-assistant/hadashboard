@@ -3,7 +3,7 @@ class Dashing.Hascene extends Dashing.ClickableWidget
     super
 
   state = 'off'
-    
+
   @accessor 'icon',
     get: -> @['icon'] ? 'square'
     set: Batman.Property.defaultAccessor.set
@@ -15,13 +15,11 @@ class Dashing.Hascene extends Dashing.ClickableWidget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
 
   turnOff: =>
     state = 'off'
     @set 'icon-style', 'icon-inactive'
-  
+
   postScene: ->
     $.post '/homeassistant/scene',
       widgetId: @get('id'),

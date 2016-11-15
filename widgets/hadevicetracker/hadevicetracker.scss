@@ -1,19 +1,15 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-hadevicetracker styles
 // ----------------------------------------------------------------------------
 .widget-hadevicetracker {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
   .icon-present {
-  	color: #aaff00;
+  	color: $color-active;
   }
 
   .icon-absent {
-  	color: #888888;
+  	color: $color-inactive;
   }
 }

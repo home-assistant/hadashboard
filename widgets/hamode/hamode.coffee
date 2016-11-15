@@ -58,8 +58,6 @@ class Dashing.Hamode extends Dashing.ClickableWidget
     @showIcon()
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
 
 
   onData: (data) ->

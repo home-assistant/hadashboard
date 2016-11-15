@@ -12,7 +12,7 @@ The Dashboard is at its heart a [Dashing](http://dashing.io/) Dashboard. Dashing
 
 # Installation
 
-Installation can be performed using Docker (Contributed by [marijngiesen](https://github.com/marijngiesen) or manually if Docker doesn't work for you. We also have a Raspberry PI version of Docker contributed by (snizzleorg)[https://community.home-assistant.io/users/snizzleorg/activity]
+Installation can be performed using Docker (Contributed by [marijngiesen](https://github.com/marijngiesen)) or manually if Docker doesn't work for you. We also have a Raspberry PI version of Docker contributed by [snizzleorg](https://community.home-assistant.io/users/snizzleorg/activity)
 
 ## Using Docker (Non Raspian)
 
@@ -142,7 +142,7 @@ $ dashing start
 Point your browser to **http://localhost:3030** to access the hadashboard on your local machine.and you should see the supplied default dashboard.
 
 # Configuring The Dashboard (All installations)
-Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets. 
+Hadashboard is a Dashing app, so make sure to read all the instructions on http://dashing.io to learn how to add widgets to your dashboard, as well as how to create new widgets.
 
 Make a copy of dashboards/example.erb and call it 'main.erb', then edit this file to reference the items you want to display and control and to get the layout that you want. Leave the original example.erb intact and unchanged so that you don't run into problems when trying to update using the git commands mentioned later in "Updating the Dashboard".
 
@@ -157,15 +157,15 @@ The basic anatomy of a widget is this:
 - **data-id**: The homeassitant entity id without the entity type (e.g. `light.office` becomes `office`).
 - **data-view**: The type of widget to be used (Haswitch, Hadimmer, Hatemp etc.)
 - **data-icon**: The icon displayed on the tile. See http://fontawesome.io for an icon cheatsheet.
-- **data-title**: The title to be displayed on the tile. 
+- **data-title**: The title to be displayed on the tile.
 - ***data-bgcolor*** (optional) - the background color of the widget.
 
 Note that although it is legal in XML terms to split the inner `<div>` like this:
 
 ``` html
  	<li data-row="" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="office" 
-            data-view="Hadimmer" 
+      <div data-id="office"
+            data-view="Hadimmer"
             data-title="Office Lamp">
       </div>
     </li>
@@ -199,7 +199,7 @@ Widget type ***Hascene***
 
 ## script
 
-Widget type ***Hascript*** 
+Widget type ***Hascript***
 
 **data-ontime** (optional): The amount of time the scene icon lights up when pressed, in milliseconds, default 1000.
 
@@ -214,7 +214,7 @@ A `Hamode` widget using this feature will look like this:
       <div data-id="day" data-view="Hamode" data-title="Good Day" data-icon="sun-o" data-changemode="Day" data-input="house_mode"></div>
     </li>
 ```
-**data-changemode**: The value of the `input_select` for which this script button will light up 
+**data-changemode**: The value of the `input_select` for which this script button will light up
 
 **data-input**: The `input_select` entity to use (minus the leading entity type)
 
@@ -242,6 +242,16 @@ The Hameter widget supports an additional paramater  `data-unit` - this allows y
 data-unit="&deg;F"
 ```
 If omitted, no units will be shown.
+
+## binary_sensor
+Widget type ***Habinary***
+
+An icon-based option for generic binary sensors. Useful for things like door contact sensors. In addition to the standard widget parameters, Habinary supports two additional parameters:
+
+- **data-iconon**: the icon to display when the sensor state is "on"
+- **data-iconoff**: the icon to display when the sensor state if "off"
+
+If no icons are specified, the widget defaults to a flat gray line for "off" and a green bullseye for "on".
 
 ## group
 Widget type ***Hagroup***
@@ -274,11 +284,11 @@ The Haalarmaction widget creates the arm/disarm/trigger buttons. Bear in mind th
 
 data-action must contain one of the following: arm_home/arm_away/trigger/disarm.
 
-# weather (requires forecast.io)
+# weather (requires dark sky)
 
 Widget type ***Haweather***
 
-In order to use the weather widget you must configure the forecast.io component, and ensure that you configure at least the following monitored conditions in your Home Assistant sensor config:
+In order to use the weather widget you must configure the dark sky component, and ensure that you configure at least the following monitored conditions in your Home Assistant sensor config:
 
 - temperature
 - humidity
@@ -343,6 +353,18 @@ data-unit="&deg;F"
 ```
 If omitted, no units will be shown.
 
+# Customizing CSS styles
+If you want to customize the styles of your dashboard and widgets, there are two options:
+
+1. You can edit the application.scss file (and the individual widget .scss files) directly (not recommended; if you pull down updates from the master repository, your changes might conflict/be overwritten)
+1. __Create override files (recommended)__
+    1. Create a couple of additional files in the _assets/stylesheets_ directory: `_application_custom.scss` and `_variables_custom.scss`.
+    1. Open `application.scss` and go to the bottom of the file. Uncomment the @import line.
+    1. Open `_variables.scss` and go to the bottom of the file. Uncomment the @import line.
+    1. Write your own SASS styles in `_application_custom.scss` (for general style customization) and `_variables_custom.scss` (for colors). You can customize those files without worrying about your changes getting overwritten if you pull down an update. The most you may have to do, if you update, will be to uncomment the @import lines again from steps 2 and 3.
+
+__Note: The `_variables.scss` file (and your customizations from `_variables_custom.scss`) get imported into nearly every widget's SCSS file, so it is a best practice to define varaibles for colors in `_variables.scss` or `_variables_custom.scss` and reference those variables in the widget SCSS.__
+
 # Changes and Restarting
 
 When you make changes to a dashboard, Dashing and `hapush` will both automatically reload and apply the changes without a need to restart.
@@ -369,7 +391,7 @@ The divisions are implicitly numbered from 1 so it is a good idea to comment the
     <div data-id="cpage1" data-view="ChangePage" data-icon="cogs" data-title="Upstairs" data-page="3" data-stagger="false" data-fasttransition="true" data-event-click="onClick"></div>
 </li>
 ```
-- ***data-page*** : The name of the page to switch to 
+- ***data-page*** : The name of the page to switch to
 
 # Multiple Dashboards
 You can also have multiple dashboards, by simply adding a new .erb file to the dashboards directory and navigating to the dashboards via `http://<IP address>:3030/dashboard-file-name-without-extension`
@@ -475,103 +497,3 @@ $ bundle
 ```
 
 For docker users, you will also need to rerun the docker build process.
-
-***Version 1.7.3***
-
-- Add cover widget
-- Garage widget is deprecated in favor of the cover widget and will be removed at some point
-- Add location text to device_tracker widget
-
-# Release Notes
-
-***Version 1.7.2***
-
-- Change weather sensor names for 0.27.0
-
-***Version 1.71***
-
-- Remove decimals introduced by Hasensor text fix
-
-***Version 1.7***
-
-- Add Docker support contributed by [marijngiesen](https://github.com/marijngiesen)
-- Add Raspberry PI Docker support contributed by [snizzleorg](https://community.home-assistant.io/users/snizzleorg/activity)
-- Fix Hasensor to allow text fields fix suggested by [splnut](https://community.home-assistant.io/users/splnut/activity)
-
-***Version 1.6***
-
-- Merge Haalarm widgets contributed by [Soul](https://community.home-assistant.io/users/soul/activity)
-- Allow Haweather units to be specified as a parameter
-
-*Breaking Changes*
-
-It is now necessary to explicitly specify the units for the weather widget or no units will be shown.
-
-***Version 1.5.1***
-
-- Fixed an issue with Float conversions on a weather field
-
-*Changes in behavior*
-
-`Wind Chill` on the weather widget has been replaced by `Apparent Temperature` which is now passed straight through from the sensor value.
-
-***Version 1.5***
-
-- Merge Hagroup contributed by [jwl173305361](https://community.home-assistant.io/users/jwl173305361/activity)
-- Add background color support for all widgets
-
-***Version 1.4***
-
-- Addition of Halock contributed by [jwl173305361](https://community.home-assistant.io/users/jwl173305361/activity)
-- Addition of Hasensor
-- Addition of Hameter
-
-*Breaking Changes*
-
-None, however, Hasensor is intended as a replacement for Hatemp, Hahumidity and Halux, which are now deprecared and will be removed in a future release. Similarly, Hameter is intended to replace Hahumiditymeter.
-
-***Version 1.3.2***
-
-- Script buttons now light up for a configurable period when activated
-- In order to accommodate the above change, functionality to run scripts and track the state of an input_select has been broken out into a new widget called `Hamode`
-
-*Breaking Changes*
-
-- Hascript no longer has the ability to track and display the state of an input_slelect. If you were using this functionality, change the type of your widget to `Hamode`
-
-
-***Version 1.3.1***
-
-- Scene buttons now light up for a configurable period when activated
-
-***Version 1.3***
-
-- Merge RSS widget contributed by [KRiS](https://community.home-assistant.io/users/kris/activity)
-- Merge Hahumiditymeter contributed by [Shiv Chanders](https://community.home-assistant.io/users/chanders/activity)
-- Allow temperature unit to be specified in the dasboard
-- Remove main.erb and replace it with example.erb
-- Update README to reflect new widgets
-- Update README with additional install notes
-- Update README with section on updating the dashboard
-
-*Breaking Changes*
-
-Previously temperature units defaulted to Fahrenheit - now there is no default, you must explicitly specify it in the Hatemp widget or you will get no units at all.
-
-***Version 1.2.1***
-
-- Minor typos in README
-
-***Version 1.2***
-
-- Fix docs and excample cfg to remove scheme from `hapush` dash_host config variable
-
-***Version 1.1*** 
-
-- Expand instructions
-- Allow no api_key
-- Allow http connections
-
-***Version 1.0***
-
-Initial Release

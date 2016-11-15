@@ -1,20 +1,12 @@
-// ----------------------------------------------------------------------------
-// Sass declarations
-// ----------------------------------------------------------------------------
+@import "variables";
 
 // ----------------------------------------------------------------------------
 // Widget-hahumidity styles
 // ----------------------------------------------------------------------------
 .widget-hahumidity {
 
-  background-color: #444 !important;
-
-  .title {
-    color: #fff
-  }
-
   .value {
-    color: #00aaff;
+    color: $blue;
     display: inline-block;
     vertical-align: middle;
   }

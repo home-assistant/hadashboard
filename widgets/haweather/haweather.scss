@@ -1,17 +1,14 @@
+@import "variables";
 // ----------------------------------------------------------------------------
 // Widget-stmode styles
 // ----------------------------------------------------------------------------
 .widget-haweather {
 
-  background-color: #444;
+  color: $orange;
 
   h1 {
   	margin-bottom: 0px;
   }
-
-  //.colored {
-  //  color: #ffaa00;
-  //}
 
   [class^="primary"] {
   	display: inline-block;

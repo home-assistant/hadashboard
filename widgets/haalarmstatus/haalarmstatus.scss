@@ -1,12 +1,12 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-haalarmstatus styles
 // ----------------------------------------------------------------------------
 .widget-haalarmstatus {
 
-  background-color: #444;
-
   .value {
-    color: #fff;
+    color: $white;
     font-size: 500%;
     font-weight: 400;
     display: inline-block;
@@ -14,4 +14,3 @@
   }
 
 }
-

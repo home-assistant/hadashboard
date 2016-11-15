@@ -21,7 +21,7 @@ class Dashing.Hainputboolean extends Dashing.ClickableWidget
     set: Batman.Property.defaultAccessor.set
 
   @accessor 'icon-style', ->
-    if @get('state') == 'on' then 'switch-icon-on' else 'switch-icon-off'    
+    if @get('state') == 'on' then 'switch-icon-on' else 'switch-icon-off'
 
   toggleState: ->
     newState = if @get('state') == 'on' then 'off' else 'on'
@@ -48,8 +48,6 @@ class Dashing.Hainputboolean extends Dashing.ClickableWidget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
 
   onClick: (event) ->
     @postState()

@@ -1,19 +1,15 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget-stmode styles
 // ----------------------------------------------------------------------------
 .widget-haalarmaction {
 
-  background-color: #444;
-
   .title {
     padding-top: 10px;
     font-size: 225%;
     font-weight: 500;
-    color: #999999;
-  }
-
-  i {
-      font-style: normal;
+    color: $gray-light;
   }
 
   .container {
@@ -29,21 +25,12 @@
       height: 100%;
   }
 
-  .icon-inactive {
-    color: #888888;
-  }
-
-  .icon-active {
-    color: #aaff00;
-  }
-
   .title-inactive {
-    color: #999999;
+    color: $gray-light;
   }
 
   .title-active {
-    color: #aaff00;
+    color: $color-active;
   }
 
 }
-

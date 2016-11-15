@@ -1,6 +1,6 @@
 class Dashing.Hameter extends Dashing.Widget
 
-  @accessor 'value', 
+  @accessor 'value',
     get: -> if @_value then Math.round(@_value) else 0
     set: (key, value) -> @_value = value
     Dashing.AnimatedValue
@@ -22,8 +22,6 @@ class Dashing.Hameter extends Dashing.Widget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
     meter = $(@node).find(".meter")
     meter.attr("data-bgcolor", meter.css("background-color"))
     meter.attr("data-fgcolor", meter.css("color"))

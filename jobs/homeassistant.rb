@@ -65,7 +65,7 @@ end
 post '/homeassistant/garage' do
 	entity_id = "garage_door." + params["widgetId"]
 	command = "close"
-	if params["command"] == "open" 
+	if params["command"] == "open"
 		command = "open"
 	else
 		command = "close"
@@ -82,7 +82,7 @@ end
 post '/homeassistant/cover' do
 	entity_id = "cover." + params["widgetId"]
 	command = "close_cover"
-	if params["command"] == "open" 
+	if params["command"] == "open"
 		command = "open_cover"
 	else
 		command = "close_cover"
@@ -100,7 +100,7 @@ end
 post '/homeassistant/lock' do
 	entity_id = "lock." + params["widgetId"]
 	command = "lock"
-	if params["command"] == "unlock" 
+	if params["command"] == "unlock"
 		command = "unlock"
 	else
 		command = "lock"
@@ -220,13 +220,17 @@ get '/homeassistant/devicetracker' do
 	else
 		state = response["state"]
 	end
-		
+
 	return JSON.generate({"state" => state.upcase})
 end
 
 post '/homeassistant/devicetracker' do
 	entity_id = params["widgetId"]
-	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => params["command"]})
+	state = params["command"].downcase
+	if state == "away"
+		state = "not_home"
+	end
+	ha_api("services/device_tracker/see", "post", {"dev_id" => entity_id, "location_name" => state})
 	return respondWithSuccess()
 end
 
@@ -261,7 +265,7 @@ get '/homeassistant/lux' do
 	return JSON.generate({"value" => response["state"]})
 end
 
-get '/homeassistant/motion' do
+get '/homeassistant/binarysensor' do
 	response = ha_api("states/binary_sensor." + params["widgetId"], "get")
 	return JSON.generate({"state" => response["state"]})
 end
@@ -275,34 +279,34 @@ end
 #Update the weather ever so often
 SCHEDULER.every '15m', :first_in => 0 do |job|
 	#Current weather
-	response = ha_api("states/sensor.forecastio_temperature", "get")
+	response = ha_api("states/sensor.dark_sky_temperature", "get")
 	temp = response["state"]
 
-	response = ha_api("states/sensor.forecastio_humidity", "get")
+	response = ha_api("states/sensor.dark_sky_humidity", "get")
 	humidity = response["state"]
 
-	response = ha_api("states/sensor.forecastio_precip_probability", "get")
+	response = ha_api("states/sensor.dark_sky_precip_probability", "get")
 	precip = response["state"]
 
-	response = ha_api("states/sensor.forecastio_precip_intensity", "get")
+	response = ha_api("states/sensor.dark_sky_precip_intensity", "get")
 	precipintensity = response["state"]
 
-	response = ha_api("states/sensor.forecastio_wind_speed", "get")
+	response = ha_api("states/sensor.dark_sky_wind_speed", "get")
 	windspeed = response["state"]
 
-	response = ha_api("states/sensor.forecastio_pressure", "get")
+	response = ha_api("states/sensor.dark_sky_pressure", "get")
 	pressure = response["state"]
-	
-	response = ha_api("states/sensor.forecastio_wind_bearing", "get")
+
+	response = ha_api("states/sensor.dark_sky_wind_bearing", "get")
 	windbearing = response["state"]
 
-	
-	response = ha_api("states/sensor.forecastio_apparent_temperature", "get")
+
+	response = ha_api("states/sensor.dark_sky_apparent_temperature", "get")
 	tempchill = response["state"]
-	
-	response = ha_api("states/sensor.forecastio_icon", "get")
+
+	response = ha_api("states/sensor.dark_sky_icon", "get")
 	icon = response["state"].gsub(/-/, '_')
- 
+
 	#Emit the event
 	send_event('weather', {
 		temp: temp,

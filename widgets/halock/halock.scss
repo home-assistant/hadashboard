@@ -1,20 +1,16 @@
+@import "variables";
+
 // ----------------------------------------------------------------------------
 // Widget styles
 // ----------------------------------------------------------------------------
 .widget-halock {
 
-  background-color: #444;
-
-  .title {
-    color: #fff;
-  }
-
   .icon-unlocked {
-        color: #ff00aa;
+        color: $red;
   }
 
   .icon-locked {
-        color: #fff;
+        color: $white;
   }
 
 }

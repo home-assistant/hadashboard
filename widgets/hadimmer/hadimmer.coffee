@@ -25,7 +25,7 @@ class Dashing.Hadimmer extends Dashing.ClickableWidget
     set: Batman.Property.defaultAccessor.set
 
   @accessor 'icon-style', ->
-    if @get('state') == 'on' then 'dimmer-icon-on' else 'dimmer-icon-off' 
+    if @get('state') == 'on' then 'dimmer-icon-on' else 'dimmer-icon-off'
 
   plusLevel: ->
     newLevel = parseInt(@get('level'))+10
@@ -67,8 +67,8 @@ class Dashing.Hadimmer extends Dashing.ClickableWidget
         json = JSON.parse data
         if json.error != 0
           @toggleState()
-  
-  
+
+
   levelUp: ->
     newLevel = @plusLevel()
     $.post '/homeassistant/dimmerLevel',
@@ -89,8 +89,7 @@ class Dashing.Hadimmer extends Dashing.ClickableWidget
   ready: ->
     if @get('bgcolor')
       $(@node).css("background-color", @get('bgcolor'))
-    else
-      $(@node).css("background-color", "#444")
+      
   onData: (data) ->
 
   onClick: (event) ->
