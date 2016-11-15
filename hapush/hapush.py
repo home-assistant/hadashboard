@@ -161,6 +161,7 @@ def dashboard_update(widget_id, type, state):
 def translate_view(view):
   views = {
         "Hadevicetracker": "device_tracker",
+        "Hamediaplayer": "media_player",
         "Hagarage": "garage_door",
         "Hacover": "cover",
         "Halock": "lock",
