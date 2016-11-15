@@ -140,6 +140,10 @@ def dashboard_update(widget_id, type, state):
       values = {"state": state['state']}
       logger.info("lock." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
+     elif type == "media_player":
+      values = {"state": state['state']}
+      logger.info("media_player." + widget_id + " -> " + state['state'])
+      call_ha(widget_id, values)
     elif type == "alarm_control_panel":
       values = {"value": state['state']}
       logger.info("alarm_control_panel." + widget_id + " -> " + state['state'])
@@ -160,6 +164,7 @@ def translate_view(view):
         "Hagarage": "garage_door",
         "Hacover": "cover",
         "Halock": "lock",
+        "Hamediaplayer": "media_player",
         "Haalarmstatus": "alarm_control_panel",
         "Hainputboolean": "input_boolean",
         "Halux": "sensor",
