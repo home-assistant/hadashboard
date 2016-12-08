@@ -220,8 +220,8 @@ get '/homeassistant/devicetracker' do
 	else
 		state = response["state"]
 	end
-
-	return JSON.generate({"state" => state.upcase})
+	state = state.nil? ? "unknown" : state.upcase
+	return JSON.generate({"state" => state})
 end
 
 post '/homeassistant/devicetracker' do
