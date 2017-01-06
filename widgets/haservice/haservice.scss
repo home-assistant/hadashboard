@@ -1,0 +1,19 @@
+@import "variables";
+// ----------------------------------------------------------------------------
+// Widget styles
+// ----------------------------------------------------------------------------
+.widget-haswitch {
+
+  .switch-icon-off .switch-icon-on {
+    font-size: 150%;
+  }
+
+  .switch-icon-off {
+    color: $gray-light;
+  }
+
+  .switch-icon-on {
+  	color: $green;
+  }
+
+}
