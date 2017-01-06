@@ -7,9 +7,9 @@ class Dashing.Haservice extends Dashing.ClickableWidget
     set: Batman.Property.defaultAccessor.set
 
   postState: ->
-    $.post '/homeassistant/switch',
-      payload: JSON.parse @get('payload'),
+    $.post '/homeassistant/service',
       service: @get('service'),
+      payload: @get('payload'),
       (data) =>
         json = JSON.parse data
 
