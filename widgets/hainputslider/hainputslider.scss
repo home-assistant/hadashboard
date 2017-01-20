@@ -1,0 +1,60 @@
+// ----------------------------------------------------------------------------
+// Widget-hasensor styles
+// ----------------------------------------------------------------------------
+.widget-hainputslider {
+
+  background-color: #444;
+
+  .title {
+    color: #fff;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  .title2 {
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
+
+  .value {
+  	color: #00aaff;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .unit {
+    color: #00aaff;
+    font-size: 200%;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+    margin-top: 0px;
+  }
+  .secondary-icon {
+    position: absolute;
+    bottom: 0px;
+    font-size: 25px;
+    width: 32px;
+    color: #888888;
+
+    &.plus {
+      right: 24px;
+
+      i {
+        padding-top: 10px;
+        padding-left: 30px;
+      }
+    }
+
+    &.minus {
+      left: 8px;
+
+      i {
+        padding-top: 10px;
+        padding-right: 30px;
+      }
+    }
+  }
+}
