@@ -118,6 +118,10 @@ def dashboard_update(widget_id, type, state):
       values = {"value": state['state']}
       logger.info("sensor." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
+    elif type == "input_slider":
+      values = {"value": state['state']}
+      logger.info("input_slider." + widget_id + " -> " + state['state'])
+      call_ha(widget_id, values)
     elif type == "light":
       astate = state['state']
       try:
