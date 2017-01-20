@@ -1,0 +1,40 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #ec663c;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+.widget-halink {
+
+  background-color: $background-color;
+
+  .title {
+    color: #fff;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  .title2 {
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
+
+  .switch-icon-off .switch-icon-on {
+    font-size: 150%;
+  }
+
+  .switch-icon-off {
+    color: #000000;
+  }
+
+  .switch-icon-on {
+  	color: #aaff00;
+  }
+
+}
