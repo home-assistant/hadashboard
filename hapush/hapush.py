@@ -236,11 +236,29 @@ def readDashboards():
   global monitored_files
   global dash_dir
 
+  erb_re = re.compile(r'<%=\s*erb\s+:\'?([^\'\s]+)\'?\s*%>')
+
   found_files = glob.glob(os.path.join(dash_dir, '*.erb'))
   for file in found_files:
     if file == "{0}/layout.erb".format(dash_dir):
       continue
     modified = os.path.getmtime(file)
+
+    with open(file) as f:
+      for line in f:
+        match = erb_re.search(line)
+        if match:
+          erb = match.group(1)
+          erb_path = os.path.join(dash_dir, erb + ".erb")
+          if os.path.exists(erb_path):
+            mod = os.path.getmtime(erb_path)
+            if erb_path in monitored_files:
+              if monitored_files[erb_path] < mod:
+                readDash(erb_path)
+            else:
+                readDash(erb_path)
+            monitored_files[erb_path] = mod
+
     if file in monitored_files:
       if monitored_files[file] < modified:
         readDash(file)
