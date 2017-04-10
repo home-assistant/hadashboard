@@ -176,6 +176,54 @@ get '/homeassistant/scene' do
 	return JSON.generate({"mode" => response["state"]})
 end
 
+get '/homeassistant/mediaplayer' do
+    response = ha_api("states/media_player." + params["widgetId"], "get")
+    return JSON.generate(response)
+end
+
+post '/homeassistant/mediaplayerMute' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/volume_mute", "post", {"entity_id" => entity_id,
+        "is_volume_muted" => params['command'] })
+    return respondWithSuccess()
+end
+
+post '/homeassistant/mediaplayerVolumeUp' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/volume_up", "post", {"entity_id" => entity_id})
+    return respondWithSuccess()
+end
+
+post '/homeassistant/mediaplayerVolumeDown' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/volume_down", "post", {"entity_id" => entity_id})
+    return respondWithSuccess()
+end
+
+post '/homeassistant/mediaplayerVolumeSet' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/volume_set", "post", {"entity_id" => entity_id,
+        "volume_level" => Float(params["command"])})
+    return respondWithSuccess()
+end
+
+post '/homeassistant/mediaplayerPlayPause' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/media_play_pause", "post", {"entity_id" => entity_id})
+    return respondWithSuccess()
+end
+
+post '/homeassistant/mediaplayerNext' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/media_next_track", "post", {"entity_id" => entity_id})
+    return respondWithSuccess()
+end
+
+post '/homeassistant/mediaplayerPrev' do
+    entity_id = "media_player." + params["widgetId"]
+    ha_api("services/media_player/media_previous_track", "post", {"entity_id" => entity_id})
+    return respondWithSuccess()
+end
 
 get '/homeassistant/dimmer' do
 	response = ha_api("states/light." + params["widgetId"], "get")

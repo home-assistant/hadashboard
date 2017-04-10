@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import json
-import sys
 import traceback
 import re
 import requests
@@ -144,6 +143,9 @@ def dashboard_update(widget_id, type, state):
       values = {"value": state['state']}
       logger.info("alarm_control_panel." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
+    elif type == "media_player":
+      logger.info("media_player." + widget_id + " -> " + str(state))
+      call_ha(widget_id, state)
     elif type == "script":
       values = {"mode": state['state']}
       logger.info("script." + widget_id + " -> " + state['state'])
@@ -174,7 +176,8 @@ def translate_view(view):
         "Hamode": "script",
         "Hatemp": "sensor",
         "Hasensor": "sensor",
-        "Hameter": "sensor"
+        "Hameter": "sensor",
+        "Hamediaplayer": "media_player"
       }
   if view in views:
     return views[view]
@@ -241,6 +244,7 @@ def readDashboards():
     if file == "{0}/layout.erb".format(dash_dir):
       continue
     modified = os.path.getmtime(file)
+
     if file in monitored_files:
       if monitored_files[file] < modified:
         readDash(file)
