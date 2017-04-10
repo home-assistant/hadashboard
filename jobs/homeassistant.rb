@@ -165,6 +165,11 @@ post '/homeassistant/script' do
 	return respondWithSuccess()
 end
 
+post '/homeassistant/service' do
+	ha_api("services/" + params["service"], "post", params["payload"])
+	return respondWithSuccess()
+end
+
 post '/homeassistant/scene' do
 	entity_id = "scene." + params["widgetId"]
 	ha_api("services/scene/turn_on", "post", {"entity_id" => entity_id})
