@@ -122,6 +122,7 @@ post '/homeassistant/alarm_control_panel_digit' do
       # the 'clear' button has been pressed
       # so blank the stored code and retrieve current status for display
       $alarm_control_panel_code = ""
+
       response = ha_api("states/alarm_control_panel." + alarm_entity, "get")
       status_widget_value = response["state"]
     else
@@ -224,6 +225,18 @@ post '/homeassistant/mediaplayerPrev' do
     ha_api("services/media_player/media_previous_track", "post", {"entity_id" => entity_id})
     return respondWithSuccess()
 end
+
+get '/homeassistant/input_slider' do
+	response = ha_api("states/input_slider." + params["widgetId"], "get")
+	return JSON.generate({"value" => response["state"]})
+end
+
+post '/homeassistant/input_slider' do
+	entity_id = "input_slider." + params["widgetId"]
+	ha_api("services/input_slider/select_value", "post", {"entity_id" => entity_id, "value" => params["command"]})
+	return respondWithSuccess()
+end
+
 
 get '/homeassistant/dimmer' do
 	response = ha_api("states/light." + params["widgetId"], "get")
