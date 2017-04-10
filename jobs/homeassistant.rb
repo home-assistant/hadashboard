@@ -46,6 +46,17 @@ post '/homeassistant/switch' do
 	return respondWithSuccess()
 end
 
+get '/homeassistant/media_player' do
+        response = ha_api("states/switch." + params["widgetId"], "get")
+        return JSON.generate({"state" => response["state"]})
+end
+
+post '/homeassistant/media_player' do
+        entity_id = "media_player." + params["widgetId"]
+        ha_api("services/media_player/turn_" + params["command"], "post", {"entity_id" => entity_id})
+        return respondWithSuccess()
+end
+
 get '/homeassistant/group' do
         response = ha_api("states/group." + params["widgetId"], "get")
         return JSON.generate({"state" => response["state"]})

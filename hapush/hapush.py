@@ -89,6 +89,10 @@ def dashboard_update(widget_id, type, state):
       values = {"state": state['state']}
       logger.info("switch." + widget_id + " -> " + state['state'])
       call_ha(widget_id, values)
+    elif type == "media_player":
+      values = {"state": state['state']}
+      logger.info("media_player." + widget_id + " -> " + state['state'])
+      call_ha(widget_id, values)
     elif type == "group":
       values = {"state": state['state']}
       logger.info("group." + widget_id + " -> " + state['state'])
@@ -159,6 +163,7 @@ def dashboard_update(widget_id, type, state):
 def translate_view(view):
   views = {
         "Hadevicetracker": "device_tracker",
+        "Hamediaplayer": "media_player",
         "Hagarage": "garage_door",
         "Hacover": "cover",
         "Halock": "lock",
