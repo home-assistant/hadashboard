@@ -1,6 +1,6 @@
-# Please note: This version of HADashboard is now deprecated. It will no longer be developed and there will be noi further bugfixes. HADashboard has been completely re-written and is now part of AppDaemon. For further details see the [HADashboard page](https://home-assistant.io/docs/ecosystem/hadashboard/) on the Home Assistant Website.
+# Please note: This version of HADashboard is now deprecated. It will no longer be developed and there will be no further bugfixes. HADashboard has been completely re-written and is now part of AppDaemon. For further details see the [HADashboard page](https://home-assistant.io/docs/ecosystem/hadashboard/) on the Home Assistant Website.
 
-
+For Reference, here is the old content. It should still work, but the new version is much more performant, has additional finctionas and is being actively maintained. You haev been warned!
 
 # Description
 
